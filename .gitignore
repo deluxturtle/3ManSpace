@@ -193,19 +193,13 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 
+# Unity
 Temp/
-
 Library/
-
 Obj/
-
-*.csproj
-
 *.unityproj
-
-*.sln
-
 *.user
-
 *.userprefs
-
+*.DS_store
+*.sln
+*.csproj
