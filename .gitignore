@@ -201,3 +201,5 @@ Obj/
 *.user
 *.userprefs
 *.DS_store
+*.sln
+*.csproj
