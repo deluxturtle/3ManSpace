@@ -356,6 +356,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1765884780}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71462cb5c90bd174a892e1bfa63bb172, type: 3}
+  m_Script: {fileID: 11500000, guid: 86c2df8192f9162429beadad16dd8167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  rotateSpeed: 4
+  shipSprite: {fileID: 1765301721}
