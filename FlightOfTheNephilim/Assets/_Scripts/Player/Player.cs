@@ -4,6 +4,7 @@ using System.Collections;
 /// <summary>
 /// Author: Andrew Seba
 /// Description: Handles movement for the player.
+/// rotates player too.
 /// </summary>
 public class Player : MonoBehaviour {
 
