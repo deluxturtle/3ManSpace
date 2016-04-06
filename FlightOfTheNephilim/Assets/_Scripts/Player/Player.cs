@@ -12,31 +12,25 @@ public class Player : MonoBehaviour {
 
     public GameObject shipSprite;
 
-    private Vector3 velocity = Vector3.zero;
-    private float rotationX;
-    private float rotationY;
+    private Vector3 inputDirection = Vector3.zero;
 	
 	// Update is called once per frame
 	void Update ()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
 
-        if(horizontalInput < 0)
+        inputDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+
+        if(inputDirection.magnitude != 0)
         {
-
-        }
-        velocity = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-
-        if(velocity.magnitude != 0)
-        {
-            float angle = ((Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg) - 90);
+            float angle = ((Mathf.Atan2(inputDirection.y, inputDirection.x) * Mathf.Rad2Deg) - 90);
             Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
             shipSprite.transform.rotation = Quaternion.RotateTowards(shipSprite.transform.rotation, targetRotation, rotateSpeed);
 
         }
-        transform.Translate(velocity * speed * Time.deltaTime);
-        Debug.DrawRay(transform.position, velocity);
+
+
+        transform.Translate(inputDirection * speed * Time.deltaTime);
+        //Debug.DrawRay(transform.position, velocity);
 
 
     }
