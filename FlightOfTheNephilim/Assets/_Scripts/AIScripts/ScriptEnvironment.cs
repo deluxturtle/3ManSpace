@@ -10,6 +10,21 @@ public class ScriptEnvironment : ScriptEnemy {
 
     Vector3 travelDirection;
 
+    /// <summary>
+    /// Constructor that calls base contstuctor with no params
+    /// </summary>
+    public ScriptEnvironment() : base()
+    {
+
+    }
+
+    /// <summary>
+    /// Constructor that calls base constructor with params
+    /// </summary>
+    /// <param name="Health"></param>
+    /// <param name="Speed"></param>
+    /// <param name="Damage"></param>
+    /// <param name="ShotTimer"></param>
     public ScriptEnvironment(float Health, float Speed, float Damage, float ShotTimer) 
         : base (Health, Speed, Damage, ShotTimer)
     {
