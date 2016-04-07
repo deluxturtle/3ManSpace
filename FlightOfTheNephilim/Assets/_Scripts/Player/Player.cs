@@ -4,15 +4,19 @@ using System.Collections;
 /// <summary>
 /// Author: Andrew Seba
 /// Description: Handles movement for the player.
+/// rotates player too.
 /// </summary>
 public class Player : MonoBehaviour {
 
-    public float speed = 5f;
+
+    public float speed = 0.1f;
+    public float maxSpeed = 5f;
     public float rotateSpeed = 0.5f;
 
     public GameObject shipSprite;
 
     private Vector3 inputDirection = Vector3.zero;
+    private Vector3 velocity;
 	
 	// Update is called once per frame
 	void Update ()
@@ -28,8 +32,19 @@ public class Player : MonoBehaviour {
 
         }
 
+        velocity += inputDirection * speed * Time.deltaTime;
 
-        transform.Translate(inputDirection * speed * Time.deltaTime);
+        //Mike's limiter
+        if(velocity.magnitude > maxSpeed)
+        {
+            float tempMag = velocity.magnitude;
+            tempMag -= maxSpeed;
+            Vector3 newVelocity = velocity.normalized;
+            newVelocity *= tempMag;
+            velocity -= newVelocity;
+        }
+
+        transform.Translate(velocity * Time.deltaTime);
         //Debug.DrawRay(transform.position, velocity);
 
 
