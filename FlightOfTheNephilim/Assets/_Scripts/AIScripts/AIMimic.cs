@@ -34,7 +34,11 @@ public class AIMimic : ScriptAI {
 	// Use this for initialization
 	void Start () {
         FindPlayer();
-	}
+        FindController();
+        GetPlasma();
+
+        StartCoroutine(Shooting(shotTimer));
+    }
 	
 	// Update is called once per frame
 	void Update () {

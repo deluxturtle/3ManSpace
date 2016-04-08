@@ -6,7 +6,10 @@ using System.Collections;
 /// Last Modified: April 7, 2016
 /// This is the controller for Enemy AI behavior.
 /// </summary>
+
 public class ScriptAI : ScriptEnemy {
+
+    GameObject plasma;
 
     /// <summary>
     /// Constructor that calls the base constructor with no params
@@ -31,11 +34,37 @@ public class ScriptAI : ScriptEnemy {
 	
 	// Update is called a specific amount of times each second
 	void FixedUpdate () {
-	
+        Movement();
 	}
 
     void Movement()
     {
+        transform.Translate((kinematicSeek.getSteering(transform.position, player.transform.position, speed)) * Time.deltaTime);
+    }
 
+    public void GetPlasma()
+    {
+        try
+        {
+            plasma = Resources.Load("Prefabs/Plasma") as GameObject;
+        }
+        catch
+        {
+            Debug.LogError("Could not get reference to Plasma in resources /n Please check for Plasma prefab in resources foler");
+        }
+    }
+
+    public IEnumerator Shooting(float time)
+    {
+        while(enabled)
+        {
+            yield return new WaitForSeconds(time);
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        Instantiate(plasma, transform.position, Quaternion.identity);
     }
 }

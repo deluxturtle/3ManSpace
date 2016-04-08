@@ -21,6 +21,8 @@ public class ScriptEnemy : MonoBehaviour {
 
     //Enemy References
     protected GameObject player; //reference of the player for the enemy
+    protected GameObject controller; //reference to the AI controller object
+    protected KinematicSeek kinematicSeek; //reference to the Kinematic Seek class on the AI Controller
 
     /// <summary>
     /// Base constructor with no params
@@ -76,6 +78,34 @@ public class ScriptEnemy : MonoBehaviour {
     /// </summary>
     public void FindPlayer()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        try
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+        catch
+        {
+            Debug.LogError("There is no player in the scene");
+        }
+    }
+
+    public void FindController()
+    {
+        try
+        {
+            controller = GameObject.Find("AIController");
+        }
+        catch
+        {
+            Debug.LogError("There must be an AIController in the scene");
+        }
+
+        try
+        {
+            kinematicSeek = controller.GetComponent<KinematicSeek>();
+        }
+        catch
+        {
+            Debug.LogError("There is no KinematicSeek script on the AIController");
+        }
     }
 }
