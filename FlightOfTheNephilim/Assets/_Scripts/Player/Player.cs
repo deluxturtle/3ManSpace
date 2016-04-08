@@ -17,6 +17,13 @@ public class Player : MonoBehaviour {
 
     private Vector3 inputDirection = Vector3.zero;
     private Vector3 velocity;
+
+    private Animator animator;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -47,6 +54,7 @@ public class Player : MonoBehaviour {
         transform.Translate(velocity * Time.deltaTime);
         //Debug.DrawRay(transform.position, velocity);
 
+        animator.SetFloat("thrust", inputDirection.magnitude);
 
     }
 }
