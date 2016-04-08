@@ -1,1 +1,31 @@
-This is just a thing for testies. 
+ScriptEnemy:
+	Variables:  Health, Speed, Damage, ShotTimer
+	Methods: TakeDamage, Destruction
+
+ScriptAI : Inherate ScriptEnemy
+	Variables:
+	Methods: MoveTowards, CircleAround, Shoot
+
+ScriptEnvironment: Inherate ScriptEnemy
+	Variables: 
+	Methods: MoveTowards
+
+AIMimic: Inherate ScriptAI
+	Variables:
+	Methods: 
+
+AIChaotic: Inherate ScriptAI
+	Variables:
+	Methods:
+
+AITrick: Inherate ScriptAI
+	Variables:
+	Methods:
+
+AIDuplicator: Inherate AIMimic
+	Variables:
+	Methods:
+
+AIImmortal: Inherate AIMimic
+	Variables: Respawn Counter
+	Methods:Override Destruction

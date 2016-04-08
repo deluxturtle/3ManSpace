@@ -22,6 +22,25 @@ public class ScriptEnemy : MonoBehaviour {
     //Enemy References
     protected GameObject player; //reference of the player for the enemy
 
+    /// <summary>
+    /// Base constructor with no params
+    /// </summary>
+    public ScriptEnemy()
+    {
+        health = 0;
+        speed = 0;
+        damage = 0;
+        shotTimer = 0;
+        player = null;
+    }
+
+    /// <summary>
+    /// Base Constructor with Param
+    /// </summary>
+    /// <param name="Health"></param>
+    /// <param name="Speed"></param>
+    /// <param name="Damage"></param>
+    /// <param name="ShotTimer"></param>
     public ScriptEnemy(float Health, float Speed, float Damage, float ShotTimer)
     {
         health = Health;
@@ -44,7 +63,7 @@ public class ScriptEnemy : MonoBehaviour {
         }
     }
 
-    public void Destruction()
+    public virtual void Destruction()
     {
         Destroy(gameObject);
     }
