@@ -5,6 +5,8 @@ using System.Collections;
 /// @author Michael Dobson
 /// Last Modified: April 7, 2016
 /// This is the specific behavior for Chaotic style enemies
+/// Chaotic enemies will behave in a bullet hell style shooter
+/// while trying to attack the player.
 /// </summary>
 public class AIChaotic : ScriptAI {
 
@@ -31,7 +33,7 @@ public class AIChaotic : ScriptAI {
 
     // Use this for initialization
     void Start () {
-	
+        FindPlayer();
 	}
 	
 	// Update is called once per frame

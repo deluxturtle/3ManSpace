@@ -33,7 +33,7 @@ public class ScriptEnvironment : ScriptEnemy {
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");
+        FindPlayer();
         travelDirection = (player.transform.position - transform.position).normalized;
 	}
 	

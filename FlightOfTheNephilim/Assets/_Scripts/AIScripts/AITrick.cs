@@ -33,7 +33,7 @@ public class AITrick : ScriptAI {
 
     // Use this for initialization
     void Start () {
-	
+        FindPlayer();
 	}
 	
 	// Update is called once per frame

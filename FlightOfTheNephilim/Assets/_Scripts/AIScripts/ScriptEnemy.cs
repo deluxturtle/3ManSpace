@@ -63,8 +63,19 @@ public class ScriptEnemy : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public virtual void Destruction()
     {
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Used to find the player on the sceen
+    /// </summary>
+    public void FindPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 }

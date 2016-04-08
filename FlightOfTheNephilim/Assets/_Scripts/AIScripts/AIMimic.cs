@@ -5,6 +5,8 @@ using System.Collections;
 /// @author Michael Dobson
 /// Last Modified: April 7, 2016
 /// This is the specific behavior for Mimic style enemies
+/// Mimic enemies will be a simple style enemy that just attacks
+/// in a standard behavior.
 /// </summary>
 public class AIMimic : ScriptAI {
 
@@ -31,7 +33,7 @@ public class AIMimic : ScriptAI {
 
 	// Use this for initialization
 	void Start () {
-	
+        FindPlayer();
 	}
 	
 	// Update is called once per frame

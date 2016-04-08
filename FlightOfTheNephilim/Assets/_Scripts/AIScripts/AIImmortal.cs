@@ -36,7 +36,7 @@ public class AIImmortal : AIMimic {
 
     // Use this for initialization
     void Start () {
-	
+        FindPlayer();
 	}
 	
 	// Update is called once per frame
@@ -46,6 +46,6 @@ public class AIImmortal : AIMimic {
 
     public override void Destruction()
     {
-
+        
     }
 }

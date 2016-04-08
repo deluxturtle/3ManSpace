@@ -23,8 +23,8 @@ AITrick: Inherate ScriptAI
 	Methods:
 
 AIDuplicator: Inherate AIMimic
-	Variables:
-	Methods:
+	Variables: Duplication Count
+	Methods: Ovverride Destruction
 
 AIImmortal: Inherate AIMimic
 	Variables: Respawn Counter

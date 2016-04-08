@@ -5,6 +5,9 @@ using System.Collections;
 /// @author Michael Dobson
 /// Last Modified: April 7, 2016
 /// This is the specific behavior for duplicator style enemies
+/// Duplicator enemies will split into multiple copies of itself
+/// when it's health drops to 0. The copies will be less powerful
+/// and have less health.
 /// </summary>
 public class AIDuplicator : AIMimic {
 
@@ -31,7 +34,7 @@ public class AIDuplicator : AIMimic {
 
     // Use this for initialization
     void Start () {
-	
+        FindPlayer();
 	}
 	
 	// Update is called once per frame
