@@ -215,9 +215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  speed: 1
-  damage: 0
+  shotDamage: 0
   shotTimer: 0
+  speed: 2
 --- !u!1 &865692263
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +330,7 @@ GameObject:
   - 65: {fileID: 1338202796}
   - 23: {fileID: 1338202795}
   - 114: {fileID: 1338202794}
+  - 114: {fileID: 1338202799}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -349,8 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  speed: 3
-  damage: 1
+  shotDamage: 0
   shotTimer: 5
 --- !u!23 &1338202795
 MeshRenderer:
@@ -409,3 +409,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1338202799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1338202793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d838f5b3cd5a49f48acce0c0364abaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2

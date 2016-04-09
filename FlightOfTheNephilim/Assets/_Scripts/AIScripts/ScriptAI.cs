@@ -16,13 +16,6 @@ public enum EnemyStyle
     Trickster
 };
 
-public enum EnemyType
-{
-    Soldier,
-    Tank,
-    Komikaze
-};
-
 public class ScriptAI : ScriptEnemy {
 
     GameObject plasma;
@@ -42,20 +35,19 @@ public class ScriptAI : ScriptEnemy {
     /// <param name="Speed"></param>
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
-    public ScriptAI(float Health, float Speed, float Damage, float ShotTimer)
-        : base(Health, Speed, Damage, ShotTimer)
+    public ScriptAI(float Health, float Damage, float ShotTimer)
+        : base(Health, Damage, ShotTimer)
     {
 
     }
 	
-	// Update is called a specific amount of times each second
-	void FixedUpdate () {
-        Movement();
-	}
-
-    void Movement()
+    public void SetupAI()
     {
-        transform.Translate((kinematicSeek.getSteering(transform.position, player.transform.position, speed, 4f)) * Time.deltaTime);
+        FindController();
+        FindPlayer();
+        GetPlasma();
+
+        StartCoroutine(Shooting(shotTimer));
     }
 
     public void GetPlasma()

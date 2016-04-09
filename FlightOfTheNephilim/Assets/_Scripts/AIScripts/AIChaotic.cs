@@ -27,23 +27,16 @@ public class AIChaotic : ScriptAI {
     /// <param name="Speed"></param>
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
-    public AIChaotic(float Health, float Speed, float Damage, float ShotTimer) 
-        : base(Health, Speed, Damage, ShotTimer)
+    public AIChaotic(float Health, float Damage, float ShotTimer) 
+        : base(Health, Damage, ShotTimer)
     {
 
     }
 
     // Use this for initialization
-    void Start () {
-        FindPlayer();
-        FindController();
-        GetPlasma();
-
-        StartCoroutine(Shooting(shotTimer));
+    void Start()
+    {
+        SetupAI();
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

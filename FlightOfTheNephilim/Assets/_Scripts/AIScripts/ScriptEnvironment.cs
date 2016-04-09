@@ -9,6 +9,7 @@ using System.Collections;
 public class ScriptEnvironment : ScriptEnemy {
 
     Vector3 travelDirection; //the direction that we are going to be traveling
+    public float speed; //Speed this object moves
 
     //internal use only
     float outOfPlay = 20f;
@@ -18,7 +19,7 @@ public class ScriptEnvironment : ScriptEnemy {
     /// </summary>
     public ScriptEnvironment() : base()
     {
-
+        speed = 0;
     }
 
     /// <summary>
@@ -29,9 +30,9 @@ public class ScriptEnvironment : ScriptEnemy {
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
     public ScriptEnvironment(float Health, float Speed, float Damage, float ShotTimer) 
-        : base (Health, Speed, Damage, ShotTimer)
+        : base (Health, Damage, ShotTimer)
     {
-        
+        speed = Speed;
     }
 
 	// Use this for initialization

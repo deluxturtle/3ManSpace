@@ -12,17 +12,14 @@ public class ScriptEnemy : MonoBehaviour {
     //Enemy Variables
     [Tooltip("The amount of health that this enemy has")]
     public float health; //Health of this enemy
-    [Tooltip("The speed that this enemy will move")]
-    public float speed; //Speed of this enemy
     [Tooltip("The damage this enemy does on successful attack hit")]
-    public float damage; //Damage of this enemy
+    public float shotDamage; //Damage of this enemy on successful attack
     [Tooltip("The frequency the enemy will shoot")]
     public float shotTimer; //How often the enemy will shoot
 
     //Enemy References
     protected GameObject player; //reference of the player for the enemy
     protected GameObject controller; //reference to the AI controller object
-    protected Steering kinematicSeek; //reference to the Kinematic Seek class on the AI Controller
 
     /// <summary>
     /// Base constructor with no params
@@ -30,8 +27,7 @@ public class ScriptEnemy : MonoBehaviour {
     public ScriptEnemy()
     {
         health = 0;
-        speed = 0;
-        damage = 0;
+        shotDamage = 0;
         shotTimer = 0;
         player = null;
     }
@@ -41,13 +37,12 @@ public class ScriptEnemy : MonoBehaviour {
     /// </summary>
     /// <param name="Health"></param>
     /// <param name="Speed"></param>
-    /// <param name="Damage"></param>
+    /// <param name="ShotDamage"></param>
     /// <param name="ShotTimer"></param>
-    public ScriptEnemy(float Health, float Speed, float Damage, float ShotTimer)
+    public ScriptEnemy(float Health, float ShotDamage, float ShotTimer)
     {
         health = Health;
-        speed = Speed;
-        damage = Damage;
+        shotDamage = ShotDamage;
         shotTimer = ShotTimer;
         player = null;
     }
@@ -97,15 +92,6 @@ public class ScriptEnemy : MonoBehaviour {
         catch
         {
             Debug.LogError("There must be an AIController in the scene");
-        }
-
-        try
-        {
-            kinematicSeek = controller.GetComponent<Steering>();
-        }
-        catch
-        {
-            Debug.LogError("There is no KinematicSeek script on the AIController");
         }
     }
 }
