@@ -8,14 +8,18 @@ using System.Collections;
 /// </summary>
 public class ScriptEnvironment : ScriptEnemy {
 
-    Vector3 travelDirection;
+    Vector3 travelDirection; //the direction that we are going to be traveling
+    public float speed; //Speed this object moves
+
+    //internal use only
+    float outOfPlay = 20f;
 
     /// <summary>
     /// Constructor that calls base contstuctor with no params
     /// </summary>
     public ScriptEnvironment() : base()
     {
-
+        speed = 0;
     }
 
     /// <summary>
@@ -26,20 +30,21 @@ public class ScriptEnvironment : ScriptEnemy {
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
     public ScriptEnvironment(float Health, float Speed, float Damage, float ShotTimer) 
-        : base (Health, Speed, Damage, ShotTimer)
+        : base (Health, Damage, ShotTimer)
     {
-        
+        speed = Speed;
     }
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");
+        FindPlayer();
         travelDirection = (player.transform.position - transform.position).normalized;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Move();
+        CheckPosition();
 	}
 
     /// <summary>
@@ -48,5 +53,18 @@ public class ScriptEnvironment : ScriptEnemy {
     void Move()
     {
         transform.Translate(travelDirection * speed * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Used to clean up objects that are off the screen and do not impact gameplay any further
+    /// </summary>
+    void CheckPosition()
+    {
+        if (transform.position.x > outOfPlay || transform.position.x < -outOfPlay ||
+            transform.position.y > outOfPlay || transform.position.y < -outOfPlay)
+        {
+            Debug.Log("Object removed for being outside of playing field");
+            Destruction();
+        }
     }
 }

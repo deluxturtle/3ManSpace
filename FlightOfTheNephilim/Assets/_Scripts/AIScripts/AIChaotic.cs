@@ -5,8 +5,12 @@ using System.Collections;
 /// @author Michael Dobson
 /// Last Modified: April 7, 2016
 /// This is the specific behavior for Chaotic style enemies
+/// Chaotic enemies will behave in a bullet hell style shooter
+/// while trying to attack the player.
 /// </summary>
 public class AIChaotic : ScriptAI {
+
+    EnemyStyle style = EnemyStyle.Chaotic;//The enemy style for this enemy group
 
     /// <summary>
     /// Constructor that calls base with no params
@@ -23,19 +27,16 @@ public class AIChaotic : ScriptAI {
     /// <param name="Speed"></param>
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
-    public AIChaotic(float Health, float Speed, float Damage, float ShotTimer) 
-        : base(Health, Speed, Damage, ShotTimer)
+    public AIChaotic(float Health, float Damage, float ShotTimer) 
+        : base(Health, Damage, ShotTimer)
     {
 
     }
 
     // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Start()
+    {
+        SetupAI();
+    }
+
 }

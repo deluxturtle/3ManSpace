@@ -1,31 +1,61 @@
 ScriptEnemy:
-	Variables:  Health, Speed, Damage, ShotTimer
-	Methods: TakeDamage, Destruction
+	Variables: ShotTimer, Health, ShotDamage, Player, Controller, 
+	Methods: TakeDamage, Destruction, FindPlayer, FindController
 
 ScriptAI : Inherate ScriptEnemy
-	Variables:
-	Methods: MoveTowards, CircleAround, Shoot
+	Variables: Plasma, EnemyStyle enum
+	Methods: Shoot, GetPlasma, Shooting, SetupAI
 
 ScriptEnvironment: Inherate ScriptEnemy
-	Variables: 
-	Methods: MoveTowards
+	Variables: travelDirection, outOfPlay, speed
+	Methods: Move, Check Position
 
 AIMimic: Inherate ScriptAI
-	Variables:
+	Variables: Style
 	Methods: 
 
 AIChaotic: Inherate ScriptAI
-	Variables:
+	Variables:Style
 	Methods:
 
 AITrick: Inherate ScriptAI
-	Variables:
+	Variables: Style
 	Methods:
 
 AIDuplicator: Inherate AIMimic
-	Variables:
-	Methods:
+	Variables: Duplication Count, Style
+	Methods: Ovverride Destruction
 
 AIImmortal: Inherate AIMimic
-	Variables: Respawn Counter
+	Variables: Respawn Counter, Style
 	Methods:Override Destruction
+
+====================================================================
+
+Steering: 
+	Variables: KinematicSteeringOutput Struct, player, topRight, topLeft, bottomLeft, bottomRight
+	Methods: getSteering, getSeek
+
+====================================================================
+
+EnemyClass:
+	Variables: Speed, Damage, Player, EnemyClassType enum
+	Methods: Movement
+
+AISoldier:
+	Variables: enemyClass
+	Methods:
+
+AITank:
+	Variables: enemyClass
+	Methods:
+
+AIKamikaze:
+	Variables: enemyClass
+	Methods:
+
+====================================================================
+
+AIController:
+	Variables:
+	Methods:
