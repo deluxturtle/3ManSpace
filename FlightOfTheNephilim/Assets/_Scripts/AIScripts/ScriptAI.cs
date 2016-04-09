@@ -7,6 +7,22 @@ using System.Collections;
 /// This is the controller for Enemy AI behavior.
 /// </summary>
 
+public enum EnemyStyle
+{
+    Mimic,
+    Chaotic,
+    Duplicator,
+    Immortal,
+    Trickster
+};
+
+public enum EnemyType
+{
+    Soldier,
+    Tank,
+    Komikaze
+};
+
 public class ScriptAI : ScriptEnemy {
 
     GameObject plasma;
@@ -39,7 +55,7 @@ public class ScriptAI : ScriptEnemy {
 
     void Movement()
     {
-        transform.Translate((kinematicSeek.getSteering(transform.position, player.transform.position, speed)) * Time.deltaTime);
+        transform.Translate((kinematicSeek.getSteering(transform.position, player.transform.position, speed, 4f)) * Time.deltaTime);
     }
 
     public void GetPlasma()

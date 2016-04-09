@@ -11,6 +11,8 @@ using System.Collections;
 /// </summary>
 public class AIDuplicator : AIMimic {
 
+    EnemyStyle style = EnemyStyle.Duplicator;//The enemy style for this enemy group
+
     /// <summary>
     /// Constructor that calls base with no params
     /// </summary>

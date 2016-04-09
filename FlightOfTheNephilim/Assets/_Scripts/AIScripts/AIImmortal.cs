@@ -11,6 +11,7 @@ using System.Collections;
 /// </summary>
 public class AIImmortal : AIMimic {
 
+    EnemyStyle style = EnemyStyle.Immortal;//The enemy style for this enemy group
     float respawnTimer; //The time that this enemy will take to respawn upon destruction
 
     /// <summary>

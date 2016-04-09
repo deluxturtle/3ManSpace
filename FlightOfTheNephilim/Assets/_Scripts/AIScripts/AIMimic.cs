@@ -10,6 +10,8 @@ using System.Collections;
 /// </summary>
 public class AIMimic : ScriptAI {
 
+    EnemyStyle style = EnemyStyle.Mimic;//The enemy style for this enemy group
+
     /// <summary>
     /// Constructor that calls base with no params
     /// </summary>

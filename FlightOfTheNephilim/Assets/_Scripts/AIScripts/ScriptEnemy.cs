@@ -22,7 +22,7 @@ public class ScriptEnemy : MonoBehaviour {
     //Enemy References
     protected GameObject player; //reference of the player for the enemy
     protected GameObject controller; //reference to the AI controller object
-    protected KinematicSeek kinematicSeek; //reference to the Kinematic Seek class on the AI Controller
+    protected Steering kinematicSeek; //reference to the Kinematic Seek class on the AI Controller
 
     /// <summary>
     /// Base constructor with no params
@@ -101,7 +101,7 @@ public class ScriptEnemy : MonoBehaviour {
 
         try
         {
-            kinematicSeek = controller.GetComponent<KinematicSeek>();
+            kinematicSeek = controller.GetComponent<Steering>();
         }
         catch
         {

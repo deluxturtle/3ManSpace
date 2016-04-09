@@ -10,6 +10,8 @@ using System.Collections;
 /// </summary>
 public class AITrick : ScriptAI {
 
+    EnemyStyle style = EnemyStyle.Trickster;//The enemy style for this enemy group
+
     /// <summary>
     /// Constructor that calls base with no params
     /// </summary>
