@@ -13,7 +13,8 @@ public class TouchZone : MonoBehaviour {
 
 	#region Fields
 
-	public int ID;
+	public int id;
+	public float maxRadius;
 
 	#endregion
 	
