@@ -11,6 +11,7 @@ using System.Collections;
 /// </summary>
 public class AIImmortal : AIMimic {
 
+    EnemyStyle style = EnemyStyle.Immortal;//The enemy style for this enemy group
     float respawnTimer; //The time that this enemy will take to respawn upon destruction
 
     /// <summary>
@@ -28,24 +29,19 @@ public class AIImmortal : AIMimic {
     /// <param name="Speed"></param>
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
-    public AIImmortal(float Health, float Speed, float Damage, float ShotTimer) 
-        : base(Health, Speed, Damage, ShotTimer)
+    public AIImmortal(float Health, float Damage, float ShotTimer) 
+        : base(Health, Damage, ShotTimer)
     {
 
     }
 
     // Use this for initialization
     void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        SetupAI();
+    }
 
     public override void Destruction()
     {
-
+        
     }
 }
