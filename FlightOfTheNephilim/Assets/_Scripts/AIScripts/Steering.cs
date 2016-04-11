@@ -7,6 +7,13 @@ public struct KinematicSteeringOutput
     public float rotation;
 }
 
+/// <summary>
+/// @author Michael Dobson
+/// Last Modified: April 10, 2016
+/// Last Modified by: Michael Dobson
+/// This is the Kinematic steering script that will allow for control over the steering behaviors
+/// that are sent to the AI.
+/// </summary>
 public class Steering : MonoBehaviour
 {
     //Normal Vectors

@@ -8,14 +8,19 @@ public enum EnemyClassType
     Komikaze
 };
 
-
+/// <summary>
+/// @author Michael Dobson
+/// Last Modified: April 10, 2016
+/// Last Modified by: Michael Dobson
+/// This is the base for the enemy class type. 
+/// </summary>
 public class EnemyClass : MonoBehaviour {
 
     public float speed; //The speed this enemy moves
 
-    protected GameObject player;
-    protected GameObject controller;
-    protected Steering steering;
+    protected GameObject player; //reference to the player object
+    protected GameObject controller; //reference to the ai controller
+    protected Steering steering; //reference to the steering script on the ai controller
 
     //Update is run oncec per frame
     void Update()

@@ -3,6 +3,8 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
+/// Last Modified: April 10, 2016
+/// Last Modified by: Michael Dobson
 /// This is the basic constructor for an enemy,
 /// this constcructor will be overriden by subsequent scripts
 /// to create the different AI types for this game.

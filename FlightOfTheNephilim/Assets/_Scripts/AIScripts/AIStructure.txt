@@ -1,18 +1,24 @@
+@author Michael Dobson
+Last Modified: April 10, 2016
+Last Modified by: Michael Dobson
+This is the data structure for all AI scripts. This includes inheratance, variables, and methods.
+This file is used to keep track of the larger number of connections in the AI structure.
+
 ScriptEnemy:
 	Variables: ShotTimer, Health, ShotDamage, Player, Controller, 
 	Methods: TakeDamage, Destruction, FindPlayer, FindController
 
 ScriptAI : Inherate ScriptEnemy
-	Variables: Plasma, EnemyStyle enum
-	Methods: Shoot, GetPlasma, Shooting, SetupAI
+	Variables: Plasma, EnemyStyle enum, shootingRadius, enemyControllerScript
+	Methods: Shoot, GetPlasma, Shooting, SetupAI, GetControllerScript
 
 ScriptEnvironment: Inherate ScriptEnemy
 	Variables: travelDirection, outOfPlay, speed
 	Methods: Move, Check Position
 
 AIMimic: Inherate ScriptAI
-	Variables: Style
-	Methods: 
+	Variables: Style, MyClass
+	Methods: GetData
 
 AIChaotic: Inherate ScriptAI
 	Variables:Style
@@ -56,6 +62,6 @@ AIKamikaze:
 
 ====================================================================
 
-AIController:
-	Variables:
+EnemyController:
+	Variables: EnemyData, (Soldier, Kamikaze and Tank Class for each enemy style)
 	Methods:

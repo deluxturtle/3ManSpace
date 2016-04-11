@@ -1,12 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// @author Michael Dobson
-/// Last Modified: April 7, 2016
-/// This is the controller for Enemy AI behavior.
-/// </summary>
-
 public enum EnemyStyle
 {
     Mimic,
@@ -16,9 +10,23 @@ public enum EnemyStyle
     Trickster
 };
 
+/// <summary>
+/// @author Michael Dobson
+/// Last Modified: April 10, 2016
+/// Last Modified by: Michael Dobson
+/// This is the controller for Enemy AI behavior.
+/// </summary>
 public class ScriptAI : ScriptEnemy {
 
     GameObject plasma;
+
+    //Public variables
+    [Tooltip("The radius that this enemy will shoot at the player")]
+    public float shootingRadius; //The radius around the player that the enemy will fire at the player
+    [Tooltip("The radius that this enemy will stop seeking the player")]
+    public float radiusOfSatisfaction; //The radius that th will stop seeking the target Should be less than shooting radius
+
+    protected EnemyController enemyControllerScript; //The controller that stores the data for all enemies
 
     /// <summary>
     /// Constructor that calls the base constructor with no params
@@ -46,11 +54,12 @@ public class ScriptAI : ScriptEnemy {
         FindController();
         FindPlayer();
         GetPlasma();
+        GetControllerScript();
 
         StartCoroutine(Shooting(shotTimer));
     }
 
-    public void GetPlasma()
+    void GetPlasma()
     {
         try
         {
@@ -62,12 +71,29 @@ public class ScriptAI : ScriptEnemy {
         }
     }
 
-    public IEnumerator Shooting(float time)
+    void GetControllerScript()
+    {
+        try
+        {
+            enemyControllerScript = controller.GetComponent<EnemyController>();
+        }
+        catch
+        {
+            Debug.LogError("Could not get reference to EnemyController Script on AIController. /n Please Check to make sure there is an EnemyController Script on the AIController");
+        }
+    }
+
+    IEnumerator Shooting(float time)
     {
         while(enabled)
         {
             yield return new WaitForSeconds(time);
-            Shoot();
+            Vector3 tempVector;
+            tempVector = player.transform.position - transform.position; 
+            if(tempVector.magnitude < shootingRadius)
+            {
+                Shoot();
+            }
         }
     }
 

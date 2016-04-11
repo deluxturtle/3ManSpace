@@ -4,6 +4,7 @@ using System.Collections;
 /// <summary>
 /// @author Michael Dobson
 /// Last Modified: April 7, 2016
+/// Last Modified by: Michael Dobson
 /// This is the specific behavior for duplicator style enemies
 /// Duplicator enemies will split into multiple copies of itself
 /// when it's health drops to 0. The copies will be less powerful

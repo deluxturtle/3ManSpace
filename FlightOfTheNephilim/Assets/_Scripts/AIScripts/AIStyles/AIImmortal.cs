@@ -4,6 +4,7 @@ using System.Collections;
 /// <summary>
 /// @author Michael Dobson
 /// Last Modified: April 7, 2016
+/// Last Modified by: Michael Dobson
 /// This is the specific behavior for Immortal style enemies.
 /// Immortal enemies will respawn after being "destroyed".
 /// Upon dropping below 0 health the enemy will go inactive for a 

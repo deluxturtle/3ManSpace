@@ -3,6 +3,8 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
+/// Last Modified: April 10, 2016
+/// Last Modified by: Michael Dobson
 /// This script will be the AI that environmental enemies
 /// will use to perform actions in the game.
 /// </summary>
