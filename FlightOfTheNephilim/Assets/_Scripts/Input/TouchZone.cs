@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// Author: Matt Gipson
@@ -15,14 +17,21 @@ public class TouchZone : MonoBehaviour {
 
 	public int id;
 	public float maxRadius;
+	public int maxTouches;
 
 	#endregion
-	
-	void Start () {
-	
+
+	void OnEnable() {
+		id = Random.Range( Int32.MinValue, Int32.MaxValue );
 	}
-	
-	void Update () {
-	
+
+	void Start() {
+
 	}
+
+	void Update() {
+
+	}
+
+
 }
