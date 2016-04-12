@@ -16,10 +16,13 @@ public class SwipeHandler : MonoBehaviour {
 	public int currentSwipes;
 	public List<Swipe> swipes;
 
+	List<int> swipesToRemove;
+
 	#endregion
 
 	void Start() {
 		swipes = new List<Swipe>();
+		swipesToRemove = new List<int>();
 	}
 
 	void Update() {
@@ -50,6 +53,14 @@ public class SwipeHandler : MonoBehaviour {
 					case TouchPhase.Canceled:
 					case TouchPhase.Ended:
 						//update as if moved and queue for removal from list?
+						foreach ( Swipe swipe in swipes ) {
+							if ( swipe.fingerId == next.fingerId ) {
+								//same finger
+								swipe.endPos = next.position;
+								swipesToRemove.Add(swipe.fingerId);
+								print( "ended distance: " + swipe.Distance );
+							}
+						}
 						break;
 					default:
 
@@ -58,15 +69,22 @@ public class SwipeHandler : MonoBehaviour {
 				}
 			}
 		}
-
-		/*
-			clean up
-			foreach swipe
-			if two are on the same swipe zone remove the oldest?
-		
-		*/
 	}
 
+	void LateUpdate() {
+		for (int i = 0; i < swipes.Count; i++) {
+			Swipe swipe = swipes[i];
+			for (int j = 0; j < swipesToRemove.Count; j++) {
+				int idToRemove = swipesToRemove[j];
+				if (swipe.fingerId == idToRemove) {
+					swipes.Remove(swipe);
+					swipesToRemove.Remove(idToRemove);
+				}
+			}
+		}
+
+		print(swipes.Count);
+	}
 
 }
 
