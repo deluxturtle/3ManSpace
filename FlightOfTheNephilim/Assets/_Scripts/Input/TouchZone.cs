@@ -12,7 +12,6 @@ using Random = UnityEngine.Random;
 /// Description: TouchZone functions as single touch aswell as swipe zones until seperate functionality is needed.
 /// </summary>
 public class TouchZone : MonoBehaviour {
-
 	#region Fields
 
 	public int id;
@@ -22,16 +21,15 @@ public class TouchZone : MonoBehaviour {
 	#endregion
 
 	void OnEnable() {
-		id = Random.Range( Int32.MinValue, Int32.MaxValue );
+		id = Random.Range(Int32.MinValue, Int32.MaxValue);
 	}
 
-	void Start() {
-
-	}
+	void Start() {}
 
 	void Update() {
-
+		//gameObject.GetComponent<BoxCollider2D>().size = new Vector2
+		gameObject.GetComponent<BoxCollider2D>().size = new Vector2( Math.Abs(gameObject.GetComponent<RectTransform>().rect.x) * 2, Mathf.Abs( gameObject.GetComponent<RectTransform>().rect.y) * 2);
+	
 	}
-
 
 }
