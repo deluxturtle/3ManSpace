@@ -18,18 +18,29 @@ public class TouchZone : MonoBehaviour {
 	public float maxRadius;
 	public int maxTouches;
 
+	RectTransform myTransform;
+	Rect lastSize;
+
 	#endregion
 
 	void OnEnable() {
 		id = Random.Range(Int32.MinValue, Int32.MaxValue);
 	}
 
-	void Start() {}
+	void Start() {
+		myTransform = GetComponent<RectTransform>();
+		lastSize = myTransform.rect;
+		gameObject.GetComponent<BoxCollider2D>().size = new Vector2( Math.Abs( myTransform.rect.x ) * 2,
+																		Mathf.Abs( myTransform.rect.y ) * 2 );
+	}
 
 	void Update() {
-		//gameObject.GetComponent<BoxCollider2D>().size = new Vector2
-		gameObject.GetComponent<BoxCollider2D>().size = new Vector2( Math.Abs(gameObject.GetComponent<RectTransform>().rect.x) * 2, Mathf.Abs( gameObject.GetComponent<RectTransform>().rect.y) * 2);
-	
+		if (myTransform.rect != lastSize) {
+			gameObject.GetComponent<BoxCollider2D>().size = new Vector2(Math.Abs(myTransform.rect.x) * 2,
+			                                                            Mathf.Abs(myTransform.rect.y) * 2);
+			lastSize = myTransform.rect;
+			//print("resizing");
+		}
 	}
 
 }
