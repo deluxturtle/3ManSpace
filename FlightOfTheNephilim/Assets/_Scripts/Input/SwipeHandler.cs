@@ -23,11 +23,24 @@ public class SwipeHandler : MonoBehaviour {
 
 	List<int> swipesToRemove;
 
+	public static SwipeHandler s;
+
 	#endregion
 
+	void Init() {
+		s = this;
+		s.swipes = new List<Swipe>();
+		s.swipesToRemove = new List<int>();
+		
+		DontDestroyOnLoad(gameObject);
+	}
+
 	void Start() {
-		swipes = new List<Swipe>();
-		swipesToRemove = new List<int>();
+		if (s != null) {
+			Destroy(gameObject);
+		} else {
+			Init();
+		}
 	}
 
 	void Update() {
