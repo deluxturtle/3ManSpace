@@ -3,15 +3,13 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 7, 2016
+/// Last Modified: April 12, 2016
 /// Last Modified by: Michael Dobson
 /// This is the specific behavior for trickster style enemies.
 /// This enemy will create weak copies of itself when it comes
 /// in contact with a player
 /// </summary>
 public class AITrick : ScriptAI {
-
-    EnemyStyle style = EnemyStyle.Trickster;//The enemy style for this enemy group
 
     /// <summary>
     /// Constructor that calls base with no params
@@ -36,6 +34,8 @@ public class AITrick : ScriptAI {
 
     // Use this for initialization
     void Start () {
+        myStyle = EnemyStyle.Trickster;
         SetupAI();
     }
+
 }

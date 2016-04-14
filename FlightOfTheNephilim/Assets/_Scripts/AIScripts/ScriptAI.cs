@@ -3,6 +3,7 @@ using System.Collections;
 
 public enum EnemyStyle
 {
+    Undefined,
     Mimic,
     Chaotic,
     Duplicator,
@@ -12,20 +13,31 @@ public enum EnemyStyle
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 10, 2016
+/// Last Modified: April 14, 2016
 /// Last Modified by: Michael Dobson
 /// This is the controller for Enemy AI behavior.
 /// </summary>
 public class ScriptAI : ScriptEnemy {
 
-    GameObject plasma;
 
     //Public variables
     [Tooltip("The radius that this enemy will shoot at the player")]
     public float shootingRadius; //The radius around the player that the enemy will fire at the player
-    [Tooltip("The radius that this enemy will stop seeking the player")]
-    public float radiusOfSatisfaction; //The radius that th will stop seeking the target Should be less than shooting radius
+    [Tooltip("The damage this enemy does on successful attack hit")]
+    public float shotDamage; //Damage of this enemy on successful attack
+    [Tooltip("The frequency the enemy will shoot")]
+    public float shotTimer; //How often the enemy will shoot
+    [Tooltip("The speed that the bullets fired from this enemy will travel")]
+    public float shotSpeed;
+    [Tooltip("The speed that the enemy will rotate towards the player")]
+    float rotationSpeed = 100f;
+    //[Tooltip("The radius that this enemy will stop seeking the player")]
+    //public float radiusOfSatisfaction; //The radius that this enemy will stop seeking the target Should be less than shooting radius
 
+    //References
+    GameObject plasma;
+    protected EnemyStyle myStyle; //This is the style of this specific enemy
+    protected EnemyClassType myClass; //This is the class of this specific enemy
     protected EnemyController enemyControllerScript; //The controller that stores the data for all enemies
 
     /// <summary>
@@ -44,17 +56,35 @@ public class ScriptAI : ScriptEnemy {
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
     public ScriptAI(float Health, float Damage, float ShotTimer)
-        : base(Health, Damage, ShotTimer)
+        : base(Health)
     {
-
+        shotDamage = Damage;
+        shotTimer = ShotTimer;
     }
 	
-    public void SetupAI()
+    /// <summary>
+    /// Update is run once per frame
+    /// </summary>
+    void Update()
+    {
+        RotateToTarget();
+    }
+
+    void RotateToTarget()
+    {
+        Vector3 dir = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+    }
+
+    protected void SetupAI()
     {
         FindController();
         FindPlayer();
         GetPlasma();
         GetControllerScript();
+        GetData();
 
         StartCoroutine(Shooting(shotTimer));
     }
@@ -83,6 +113,55 @@ public class ScriptAI : ScriptEnemy {
         }
     }
 
+    void GetData()
+    {
+        EnemyData? myData = null;
+
+        if (gameObject.GetComponent<ClassKamikaze>() != null)
+        {
+            myClass = EnemyClassType.Kamikaze;
+        }
+        else if (gameObject.GetComponent<ClassSoldier>() != null)
+        {
+            myClass = EnemyClassType.Soldier;
+        }
+        else if (gameObject.GetComponent<ClassTank>() != null)
+        {
+            myClass = EnemyClassType.Tank;
+        }
+        else
+        {
+            Debug.LogError("There is no Class type on this enemy. There must be a Class and a Style for an enemy to function");
+        }
+
+        if(myClass != EnemyClassType.Undefined)
+        {
+            myData = enemyControllerScript.GetEnemyData(myStyle, myClass);
+        }
+        else
+        {
+            Debug.LogError("Enemy has no defined Class Type. Ensure there is a class type on the enemy.");
+        }
+
+        if(myData != null)
+        {
+            health = myData.Value.Health;
+            shotDamage = myData.Value.ShotDamage;
+            damage = myData.Value.ShipDamage;
+            mySprite = myData.Value.mySprite;
+            shootingRadius = myData.Value.ShotRadius;
+            shotTimer = myData.Value.GetShotTimer();
+            SpriteRenderer myRenderer = GetComponentInChildren<SpriteRenderer>();
+            myRenderer.sprite = myData.Value.mySprite;
+        }
+        else
+        {
+            Debug.LogError("There was no Style Class combination available from the controller." +
+                            " Check the style class type " + myStyle.ToString() + myClass.ToString() 
+                            +" for data.");
+        }
+    }
+
     IEnumerator Shooting(float time)
     {
         while(enabled)
@@ -100,5 +179,13 @@ public class ScriptAI : ScriptEnemy {
     void Shoot()
     {
         Instantiate(plasma, transform.position, Quaternion.identity);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, shootingRadius);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, radiusOfSatisfaction);
     }
 }

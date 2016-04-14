@@ -3,7 +3,7 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 7, 2016
+/// Last Modified: April 12, 2016
 /// Last Modified by: Michael Dobson
 /// This is the specific behavior for duplicator style enemies
 /// Duplicator enemies will split into multiple copies of itself
@@ -11,8 +11,6 @@ using System.Collections;
 /// and have less health.
 /// </summary>
 public class AIDuplicator : AIMimic {
-
-    EnemyStyle style = EnemyStyle.Duplicator;//The enemy style for this enemy group
 
     /// <summary>
     /// Constructor that calls base with no params
@@ -37,6 +35,7 @@ public class AIDuplicator : AIMimic {
 
     // Use this for initialization
     void Start () {
+        myStyle = EnemyStyle.Duplicator;
         SetupAI();
     }
 }

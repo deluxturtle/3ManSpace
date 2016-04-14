@@ -3,7 +3,7 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 10, 2016
+/// Last Modified: April 14, 2016
 /// Last Modified by: Michael Dobson
 /// This script will be the AI that environmental enemies
 /// will use to perform actions in the game.
@@ -14,7 +14,7 @@ public class ScriptEnvironment : ScriptEnemy {
     public float speed; //Speed this object moves
 
     //internal use only
-    float outOfPlay = 20f;
+    float outOfPlay = 40f;
 
     /// <summary>
     /// Constructor that calls base contstuctor with no params
@@ -32,7 +32,7 @@ public class ScriptEnvironment : ScriptEnemy {
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
     public ScriptEnvironment(float Health, float Speed, float Damage, float ShotTimer) 
-        : base (Health, Damage, ShotTimer)
+        : base (Health)
     {
         speed = Speed;
     }

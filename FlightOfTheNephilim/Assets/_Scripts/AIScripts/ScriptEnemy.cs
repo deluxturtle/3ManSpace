@@ -14,10 +14,14 @@ public class ScriptEnemy : MonoBehaviour {
     //Enemy Variables
     [Tooltip("The amount of health that this enemy has")]
     public float health; //Health of this enemy
-    [Tooltip("The damage this enemy does on successful attack hit")]
-    public float shotDamage; //Damage of this enemy on successful attack
-    [Tooltip("The frequency the enemy will shoot")]
-    public float shotTimer; //How often the enemy will shoot
+    //[Tooltip("The damage this enemy does on successful attack hit")]
+    //public float shotDamage; //Damage of this enemy on successful attack
+    //[Tooltip("The frequency the enemy will shoot")]
+    //public float shotTimer; //How often the enemy will shoot
+    [Tooltip("The sprite that repesents this enemy")]
+    public Sprite mySprite; //The sprite that represents this enemy
+    [Tooltip("The amount of damage caused if we collide with the player")]
+    public float damage; //How much damage this enemy does if we collide with the enemy
 
     //Enemy References
     protected GameObject player; //reference of the player for the enemy
@@ -28,9 +32,9 @@ public class ScriptEnemy : MonoBehaviour {
     /// </summary>
     public ScriptEnemy()
     {
-        health = 0;
-        shotDamage = 0;
-        shotTimer = 0;
+        health = 1;
+        //shotDamage = 0;
+        //shotTimer = 0;
         player = null;
     }
 
@@ -41,11 +45,11 @@ public class ScriptEnemy : MonoBehaviour {
     /// <param name="Speed"></param>
     /// <param name="ShotDamage"></param>
     /// <param name="ShotTimer"></param>
-    public ScriptEnemy(float Health, float ShotDamage, float ShotTimer)
+    public ScriptEnemy(float Health)
     {
         health = Health;
-        shotDamage = ShotDamage;
-        shotTimer = ShotTimer;
+        //shotDamage = ShotDamage;
+        //shotTimer = ShotTimer;
         player = null;
     }
 
@@ -63,7 +67,7 @@ public class ScriptEnemy : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Destruction of this object
     /// </summary>
     public virtual void Destruction()
     {

@@ -3,24 +3,32 @@ using System.Collections;
 
 public enum EnemyClassType
 {
+    Undefined,
     Soldier,
     Tank,
-    Komikaze
+    Kamikaze
 };
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 10, 2016
+/// Last Modified: April 14, 2016
 /// Last Modified by: Michael Dobson
 /// This is the base for the enemy class type. 
 /// </summary>
 public class EnemyClass : MonoBehaviour {
 
+    [Tooltip("The speed at which the enemy will seek the players position")]
     public float speed; //The speed this enemy moves
+    [Tooltip("The radius at which the enemy will stop seeking the player")]
+    public float radiusOfSatisfaction; //My radius of satisfaction
 
+    //References
     protected GameObject player; //reference to the player object
     protected GameObject controller; //reference to the ai controller
     protected Steering steering; //reference to the steering script on the ai controller
+    protected EnemyController enemyControllerScript; //Enemycontroller Script on the controller object
+    protected EnemyStyle myStyle; //The style of this enemy
+    protected EnemyClassType myClass; //The class of this enemy
 
     //Update is run oncec per frame
     void Update()
@@ -35,17 +43,18 @@ public class EnemyClass : MonoBehaviour {
 
     void Movement()
     {
-        transform.Translate((steering.getSteering(transform.position, player.transform.position, speed, 4f)) * Time.deltaTime);
+        transform.Translate((steering.getSteering(transform.position, player.transform.position, speed, radiusOfSatisfaction)) * Time.deltaTime);
     }
 
     public void Setup()
     {
         FindPlayer();
         FindController();
+        GetData();
     }
 
     /// <summary>
-    /// Used to find the player on the sceen
+    /// Used to find the player on the scene
     /// </summary>
     void FindPlayer()
     {
@@ -59,6 +68,9 @@ public class EnemyClass : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Used to find the controller objecy on the scene
+    /// </summary>
     void FindController()
     {
         try
@@ -78,5 +90,61 @@ public class EnemyClass : MonoBehaviour {
         {
             Debug.LogError("There is no KinematicSeek script on the AIController");
         }
+
+        try
+        {
+            enemyControllerScript = controller.GetComponent<EnemyController>();
+        }
+        catch
+        {
+            Debug.LogError("Could not get reference to Enemycontroller Script on the AIController. Please ensure there is an AIController Script on the AIController.");
+        }
+    }
+
+    void GetData()
+    {
+        EnemyData? myData = null;
+
+        if(gameObject.GetComponent<AIMimic>() != null)
+        {
+            myStyle = EnemyStyle.Mimic;
+        }
+        else if(gameObject.GetComponent<AIChaotic>() != null)
+        {
+            myStyle = EnemyStyle.Chaotic;
+        }
+        else if(gameObject.GetComponent<AIImmortal>() != null)
+        {
+            myStyle = EnemyStyle.Immortal;
+        }
+        else if(gameObject.GetComponent<AIDuplicator>() != null)
+        {
+            myStyle = EnemyStyle.Duplicator;
+        }
+        else if(gameObject.GetComponent<AITrick>() != null)
+        {
+            myStyle = EnemyStyle.Trickster;
+        }
+        else
+        {
+            Debug.LogError("There is no Style Script on the enemy. Enemies must have a style and a class in order to function");
+        }
+
+        if(myStyle != EnemyStyle.Undefined)
+        {
+            myData = enemyControllerScript.GetEnemyData(myStyle, myClass);
+        }
+
+        if(myData != null)
+        {
+            speed = myData.Value.Speed;
+            radiusOfSatisfaction = myData.Value.GetRadius();
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radiusOfSatisfaction);
     }
 }

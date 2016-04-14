@@ -37,7 +37,7 @@ public class Steering : MonoBehaviour
         if(distanceToTarget.magnitude > RadiusOfSatisfaction)
         {
             //seek the target, return the seek
-            return getSeek(Character, Target, MaxSpeed, RadiusOfSatisfaction, 2f);
+            return getSeek(Character, Target, MaxSpeed, RadiusOfSatisfaction, 1f);
         }
 
         //if we are inside the radius of satisfaction, 

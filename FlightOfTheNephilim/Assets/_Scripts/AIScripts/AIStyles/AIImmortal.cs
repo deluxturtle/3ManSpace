@@ -3,7 +3,7 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 7, 2016
+/// Last Modified: April 12, 2016
 /// Last Modified by: Michael Dobson
 /// This is the specific behavior for Immortal style enemies.
 /// Immortal enemies will respawn after being "destroyed".
@@ -12,7 +12,6 @@ using System.Collections;
 /// </summary>
 public class AIImmortal : AIMimic {
 
-    EnemyStyle style = EnemyStyle.Immortal;//The enemy style for this enemy group
     float respawnTimer; //The time that this enemy will take to respawn upon destruction
 
     /// <summary>
@@ -38,6 +37,7 @@ public class AIImmortal : AIMimic {
 
     // Use this for initialization
     void Start () {
+        myStyle = EnemyStyle.Immortal;
         SetupAI();
     }
 

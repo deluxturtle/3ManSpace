@@ -1,39 +1,39 @@
 @author Michael Dobson
-Last Modified: April 10, 2016
+Last Modified: April 12, 2016
 Last Modified by: Michael Dobson
 This is the data structure for all AI scripts. This includes inheratance, variables, and methods.
 This file is used to keep track of the larger number of connections in the AI structure.
 
 ScriptEnemy:
-	Variables: ShotTimer, Health, ShotDamage, Player, Controller, 
+	Variables: Health, Player, Controller, MySprite, Damage
 	Methods: TakeDamage, Destruction, FindPlayer, FindController
 
 ScriptAI : Inherate ScriptEnemy
-	Variables: Plasma, EnemyStyle enum, shootingRadius, enemyControllerScript
-	Methods: Shoot, GetPlasma, Shooting, SetupAI, GetControllerScript
+	Variables: Plasma, EnemyStyle enum, shootingRadius, enemyControllerScript, myStyle, myClass, shotTimer, shotDamage, shotSpeed, rotationSpeed
+	Methods: Shoot, GetPlasma, Shooting, SetupAI, GetControllerScript, GetData, Update, RotateToTarget
 
 ScriptEnvironment: Inherate ScriptEnemy
 	Variables: travelDirection, outOfPlay, speed
 	Methods: Move, Check Position
 
 AIMimic: Inherate ScriptAI
-	Variables: Style, MyClass
-	Methods: GetData
+	Variables: 
+	Methods: 
 
 AIChaotic: Inherate ScriptAI
-	Variables:Style
+	Variables:
 	Methods:
 
 AITrick: Inherate ScriptAI
-	Variables: Style
+	Variables:
 	Methods:
 
 AIDuplicator: Inherate AIMimic
-	Variables: Duplication Count, Style
+	Variables: Duplication Count
 	Methods: Ovverride Destruction
 
 AIImmortal: Inherate AIMimic
-	Variables: Respawn Counter, Style
+	Variables: Respawn Counter
 	Methods:Override Destruction
 
 ====================================================================
@@ -42,22 +42,25 @@ Steering:
 	Variables: KinematicSteeringOutput Struct, player, topRight, topLeft, bottomLeft, bottomRight
 	Methods: getSteering, getSeek
 
+RotateTotaret:
+	Variables: Player
+	Methods: Start, Update
 ====================================================================
 
 EnemyClass:
-	Variables: Speed, Damage, Player, EnemyClassType enum
+	Variables: Speed, Damage, Player, EnemyClassType enum, myClass, myStyle
 	Methods: Movement
 
 AISoldier:
-	Variables: enemyClass
+	Variables:
 	Methods:
 
 AITank:
-	Variables: enemyClass
+	Variables:
 	Methods:
 
 AIKamikaze:
-	Variables: enemyClass
+	Variables:
 	Methods:
 
 ====================================================================

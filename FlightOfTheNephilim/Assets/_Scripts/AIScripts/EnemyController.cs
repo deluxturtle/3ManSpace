@@ -58,7 +58,7 @@ public struct EnemyData
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 10, 2016
+/// Last Modified: April 12, 2016
 /// Last Modified by: Michael Dobson
 /// This is the script that will hold the data for the enemys.
 /// Data stored will be used to generate a range of values to be
@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour {
     public EnemyData Mimictank;
 
     //Chatoic Style
-    public EnemyData ChatoicSoldier;
+    public EnemyData ChaoticSoldier;
     public EnemyData ChaoticKamikaze;
     public EnemyData ChaoticTank;
 
@@ -91,5 +91,68 @@ public class EnemyController : MonoBehaviour {
     public EnemyData ImmortalSoldier;
     public EnemyData ImmortalKamikaze;
     public EnemyData ImmortalTank;
-    
+
+
+    public EnemyData? GetEnemyData(EnemyStyle Style, EnemyClassType ClassType)
+    {
+        switch (Style)
+        {
+            case EnemyStyle.Mimic:
+                switch (ClassType)
+                {
+                    case EnemyClassType.Soldier:
+                        return MimicSoldier;
+                    case EnemyClassType.Tank:
+                        return Mimictank;
+                    case EnemyClassType.Kamikaze:
+                        return MimicKamikaze;
+                }
+                break;
+            case EnemyStyle.Chaotic:
+                switch (ClassType)
+                {
+                    case EnemyClassType.Soldier:
+                        return ChaoticSoldier;
+                    case EnemyClassType.Tank:
+                        return ChaoticTank;
+                    case EnemyClassType.Kamikaze:
+                        return ChaoticKamikaze;
+                }
+                break;
+            case EnemyStyle.Duplicator:
+                switch (ClassType)
+                {
+                    case EnemyClassType.Soldier:
+                        return DuplicatorSoldier;
+                    case EnemyClassType.Tank:
+                        return DuplicatorTank;
+                    case EnemyClassType.Kamikaze:
+                        return DuplicatorKamikaze;
+                }
+                break;
+            case EnemyStyle.Immortal:
+                switch (ClassType)
+                {
+                    case EnemyClassType.Soldier:
+                        return ImmortalSoldier;
+                    case EnemyClassType.Tank:
+                        return ImmortalTank;
+                    case EnemyClassType.Kamikaze:
+                        return ImmortalKamikaze;
+                }
+                break;
+            case EnemyStyle.Trickster:
+                switch (ClassType)
+                {
+                    case EnemyClassType.Soldier:
+                        return TrickSoldier;
+                    case EnemyClassType.Tank:
+                        return TrickTank;
+                    case EnemyClassType.Kamikaze:
+                        return TrickKamikaze;
+                }
+                break;
+        }
+        return null;
+    }
 }
