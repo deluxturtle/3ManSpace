@@ -118,8 +118,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 161, y: 0}
-  m_SizeDelta: {x: -374, y: -195}
+  m_AnchoredPosition: {x: 147, y: -16}
+  m_SizeDelta: {x: -404, y: -227}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &113418366
 MonoBehaviour:
@@ -181,13 +181,13 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 215.69, y: 159.25}
+  m_Size: {x: 135, y: 132}
 --- !u!1001 &329886854
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 589655206}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 22407952, guid: 8bb8359aa8e55474b8fada015bad3ad1, type: 2}
       propertyPath: m_LocalPosition.x
@@ -219,15 +219,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22407952, guid: 8bb8359aa8e55474b8fada015bad3ad1, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 22407952, guid: 8bb8359aa8e55474b8fada015bad3ad1, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -269.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22407952, guid: 8bb8359aa8e55474b8fada015bad3ad1, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -179.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22407952, guid: 8bb8359aa8e55474b8fada015bad3ad1, type: 2}
       propertyPath: m_SizeDelta.x
@@ -336,11 +336,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!224 &560428406 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22407952, guid: 8bb8359aa8e55474b8fada015bad3ad1,
-    type: 2}
-  m_PrefabInternal: {fileID: 329886854}
 --- !u!1 &589655202
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +421,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 113418365}
-  - {fileID: 560428406}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}

@@ -11,7 +11,7 @@ using UnityEngine.UI;
 /// 
 /// Description: SwipeHandler 
 /// </summary>
-[RequireComponent(typeof(StandaloneInputModule), typeof(GraphicRaycaster))]
+[RequireComponent(typeof (StandaloneInputModule))]
 public class SwipeHandler : MonoBehaviour {
 	#region Fields
 
@@ -26,8 +26,6 @@ public class SwipeHandler : MonoBehaviour {
 	public List<Swipe> swipes;
 
 	List<int> swipesToRemove;
-	GraphicRaycaster gr;
-
 
 	#endregion
 
@@ -35,8 +33,7 @@ public class SwipeHandler : MonoBehaviour {
 		s = this;
 		s.swipes = new List<Swipe>();
 		s.swipesToRemove = new List<int>();
-		s.gr = GetComponent<GraphicRaycaster>();
-		
+
 		DontDestroyOnLoad(gameObject);
 	}
 
@@ -57,7 +54,7 @@ public class SwipeHandler : MonoBehaviour {
 						//create swipe object {startPos, fingerId, startingZone}
 						Swipe temp = new Swipe(next.position, next.fingerId);
 
-						RaycastHit2D hit = Physics2D.Raycast( next.position, Vector2.zero );
+						RaycastHit2D hit = Physics2D.Raycast(next.position, Vector2.zero);
 						if (hit) {
 							if (hit.transform.GetComponent<TouchZone>()) {
 								temp.startingZone = hit.transform.GetComponent<TouchZone>();
@@ -101,16 +98,13 @@ public class SwipeHandler : MonoBehaviour {
 						}
 						break;
 					default:
-
-						//
 						break;
 				}
 			}
 		}
 	}
 
-	void LateUpdate
-		() {
+	void LateUpdate() {
 		//clean up
 		for (int i = 0; i < swipes.Count; i++) {
 			Swipe swipe = swipes[i];
