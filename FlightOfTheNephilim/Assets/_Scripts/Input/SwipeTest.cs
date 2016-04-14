@@ -12,8 +12,7 @@ using System.Collections.Generic;
 public class SwipeTest : MonoBehaviour {
 
 	#region Fields
-
-	public SwipeHandler handler;
+	
 	public TouchZone movePad;
 	public float speed = 0.01f;
 
@@ -24,9 +23,9 @@ public class SwipeTest : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (handler.CurrentSwipes > 0) {
+		if (SwipeHandler.s.CurrentSwipes > 0) {
 			//print("hi");
-			foreach (Swipe swipe in handler.swipes) {
+			foreach (Swipe swipe in SwipeHandler.s.swipes) {
 				if (swipe.startingZone == movePad) {
 					//print(swipe.Distance);
 
