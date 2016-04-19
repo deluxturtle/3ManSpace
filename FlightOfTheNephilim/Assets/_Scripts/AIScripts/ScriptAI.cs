@@ -30,7 +30,7 @@ public class ScriptAI : ScriptEnemy {
     [Tooltip("The speed that the bullets fired from this enemy will travel")]
     public float shotSpeed;
     [Tooltip("The speed that the enemy will rotate towards the player")]
-    float rotationSpeed = 100f;
+    //float rotationSpeed = 100f;
     //[Tooltip("The radius that this enemy will stop seeking the player")]
     //public float radiusOfSatisfaction; //The radius that this enemy will stop seeking the target Should be less than shooting radius
 

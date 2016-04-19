@@ -46,10 +46,10 @@ public class AIChaotic : ScriptAI {
         //Debug.Log("Override Shooting");
 
         GameObject tempObj = plasma;
-        ScriptEnvironment tempEnvirn = tempObj.GetComponent<ScriptEnvironment>();
+        //ScriptEnvironment tempEnvirn = tempObj.GetComponent<ScriptEnvironment>();
 
         GameObject tempObj2 = plasma;
-        ScriptEnvironment tempEnvirn2 = tempObj2.GetComponent<ScriptEnvironment>();
+        //ScriptEnvironment tempEnvirn2 = tempObj2.GetComponent<ScriptEnvironment>();
 
         Instantiate(tempObj, transform.position, Quaternion.Euler(0, 0, spreadAngle));
         Instantiate(tempObj2, transform.position, Quaternion.Euler(0, 0, -spreadAngle));

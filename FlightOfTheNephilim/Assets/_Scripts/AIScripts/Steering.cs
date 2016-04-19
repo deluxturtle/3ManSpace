@@ -17,17 +17,17 @@ public struct KinematicSteeringOutput
 public class Steering : MonoBehaviour
 {
     //Normal Vectors
-    Vector3 topRight = Vector3.up + Vector3.right;
-    Vector3 topLeft = Vector3.up + Vector3.left;
-    Vector3 bottomLeft = Vector3.down + Vector3.left;
-    Vector3 bottomRight = Vector3.down + Vector3.right;
+    //Vector3 topRight = Vector3.up + Vector3.right;
+    //Vector3 topLeft = Vector3.up + Vector3.left;
+    //Vector3 bottomLeft = Vector3.down + Vector3.left;
+    //Vector3 bottomRight = Vector3.down + Vector3.right;
 
-    GameObject player;
+    //GameObject player;
 
     //Run once on startup of this script
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
     }
 
     public Vector3 getSteering(Vector3 Character, Vector3 Target, float MaxSpeed, float RadiusOfSatisfaction)
