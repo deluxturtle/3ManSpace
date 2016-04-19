@@ -33,8 +33,8 @@ AIDuplicator: Inherate AIMimic
 	Methods: Override Destruction
 
 AIImmortal: Inherate AIMimic
-	Variables: Respawn Counter
-	Methods: Override Destruction
+	Variables: RespawnCounter, ClassKamikaze, ClassSoldier, ClassTank, CanShoot
+	Methods: Override Destruction, Override Shoot, Reconstruct
 
 ====================================================================
 

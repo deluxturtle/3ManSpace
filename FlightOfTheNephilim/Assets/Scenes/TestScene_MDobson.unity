@@ -527,20 +527,20 @@ MonoBehaviour:
     RespawnTimer: 0
     DuplicationCount: 0
   ImmortalSoldier:
-    Style: 0
-    Class: 0
-    ShotTimerMin: 0
-    ShotTimerMax: 0
-    Health: 0
-    ShotDamage: 0
-    ShotSpeed: 0
-    ShipDamage: 0
-    Speed: 0
-    mySprite: {fileID: 0}
-    ShotRadius: 0
-    SeekRadiusMin: 0
-    SeekRadiusMax: 0
-    RespawnTimer: 0
+    Style: 4
+    Class: 1
+    ShotTimerMin: 1
+    ShotTimerMax: 2
+    Health: 1
+    ShotDamage: 2
+    ShotSpeed: 10
+    ShipDamage: 5
+    Speed: 5
+    mySprite: {fileID: 21300000, guid: 9cf1b93db54196b48936bb2b2a25ec40, type: 3}
+    ShotRadius: 8
+    SeekRadiusMin: 2
+    SeekRadiusMax: 3
+    RespawnTimer: 4
     DuplicationCount: 0
   ImmortalKamikaze:
     Style: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1769279809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a74a2d612c8ed0349bafb0ef99ea8072, type: 3}
+  m_Script: {fileID: 11500000, guid: 24fb3c503ccf898438c9ff7f021baa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1

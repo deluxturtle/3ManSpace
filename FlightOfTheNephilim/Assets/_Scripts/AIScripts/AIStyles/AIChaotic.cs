@@ -11,7 +11,7 @@ using System.Collections;
 /// </summary>
 public class AIChaotic : ScriptAI {
 
-    float spreadAngle = 10f;
+    float spreadAngle = 10f; //The angle of spread that the bullets will have when shot from this enemy
 
     /// <summary>
     /// Constructor that calls base with no params
