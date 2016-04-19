@@ -21,6 +21,8 @@ public struct EnemyData
     public float Health; //The health of the enemy
     [Tooltip("The damage bullets from this enemy will do")]
     public float ShotDamage; //The damage if a bullet from this enemy hits the player
+    [Tooltip("The speed bullets from this enemy will move")]
+    public float ShotSpeed; //The speed that bullets move when fired from this enemy
     [Tooltip("The damage this enemy does from ramming")]
     public float ShipDamage; //The damage if this enemy hits the player
     [Tooltip("The speed the enemy moves")]

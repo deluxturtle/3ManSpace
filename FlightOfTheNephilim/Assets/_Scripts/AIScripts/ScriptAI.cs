@@ -35,7 +35,7 @@ public class ScriptAI : ScriptEnemy {
     //public float radiusOfSatisfaction; //The radius that this enemy will stop seeking the target Should be less than shooting radius
 
     //References
-    GameObject plasma;
+    protected GameObject plasma;
     protected EnemyStyle myStyle; //This is the style of this specific enemy
     protected EnemyClassType myClass; //This is the class of this specific enemy
     protected EnemyController enemyControllerScript; //The controller that stores the data for all enemies
@@ -67,24 +67,16 @@ public class ScriptAI : ScriptEnemy {
     /// </summary>
     void Update()
     {
-        RotateToTarget();
-    }
-
-    void RotateToTarget()
-    {
-        Vector3 dir = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Quaternion q = Quaternion.AngleAxis(angle + 90, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+        
     }
 
     protected void SetupAI()
     {
         FindController();
         FindPlayer();
-        GetPlasma();
         GetControllerScript();
         GetData();
+        GetPlasma();
 
         StartCoroutine(Shooting(shotTimer));
     }
@@ -98,6 +90,17 @@ public class ScriptAI : ScriptEnemy {
         catch
         {
             Debug.LogError("Could not get reference to Plasma in resources /n Please check for Plasma prefab in resources foler");
+        }
+
+        try
+        {
+            ScriptEnvironment tempEnvironment = plasma.GetComponent<ScriptEnvironment>();
+            tempEnvironment.speed = shotSpeed;
+            tempEnvironment.damage = shotDamage;
+        }
+        catch
+        {
+            Debug.LogError("Could not find the ScriptEnvironment on Plasma prefab. Ensure there is a ScriptEnvironment on Plasma prefab.");
         }
     }
 
@@ -151,6 +154,7 @@ public class ScriptAI : ScriptEnemy {
             mySprite = myData.Value.mySprite;
             shootingRadius = myData.Value.ShotRadius;
             shotTimer = myData.Value.GetShotTimer();
+            shotSpeed = myData.Value.ShotSpeed;
             SpriteRenderer myRenderer = GetComponentInChildren<SpriteRenderer>();
             myRenderer.sprite = myData.Value.mySprite;
         }
@@ -176,8 +180,9 @@ public class ScriptAI : ScriptEnemy {
         }
     }
 
-    void Shoot()
+    public virtual void Shoot()
     {
+        Debug.Log("Base Shooting");
         Instantiate(plasma, transform.position, Quaternion.identity);
     }
 
@@ -185,7 +190,5 @@ public class ScriptAI : ScriptEnemy {
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, shootingRadius);
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(transform.position, radiusOfSatisfaction);
     }
 }

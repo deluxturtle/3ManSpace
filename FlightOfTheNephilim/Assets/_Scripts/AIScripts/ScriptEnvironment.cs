@@ -31,7 +31,7 @@ public class ScriptEnvironment : ScriptEnemy {
     /// <param name="Speed"></param>
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
-    public ScriptEnvironment(float Health, float Speed, float Damage, float ShotTimer) 
+    public ScriptEnvironment(float Health, float Speed) 
         : base (Health)
     {
         speed = Speed;
@@ -68,5 +68,16 @@ public class ScriptEnvironment : ScriptEnemy {
             Debug.Log("Object removed for being outside of playing field");
             Destruction();
         }
+    }
+
+    public void SetDirection(Vector3 Direction)
+    {
+        travelDirection = Direction;
+    }
+
+    void OnDrawGizmos()
+    {
+        //Gizmos.color = Color.yellow;
+        //Gizmos.DrawLine(transform.position, (transform.position + travelDirection.normalized) * 1.25f);
     }
 }

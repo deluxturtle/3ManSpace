@@ -146,5 +146,10 @@ public class EnemyClass : MonoBehaviour {
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radiusOfSatisfaction);
+        if(controller != null)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(transform.position, transform.position + (steering.getSteering(transform.position, player.transform.position, speed, radiusOfSatisfaction)));
+        }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 12, 2016
+/// Last Modified: April 14, 2016
 /// Last Modified by: Michael Dobson
 /// This is the specific behavior for Chaotic style enemies
 /// Chaotic enemies will behave in a bullet hell style shooter
@@ -37,6 +37,22 @@ public class AIChaotic : ScriptAI {
     {
         myStyle = EnemyStyle.Chaotic;
         SetupAI();
+    }
+
+    public override void Shoot()
+    {
+        Debug.Log("Override Shooting");
+        GameObject tempObj = plasma;
+        ScriptEnvironment tempEnvirn = tempObj.GetComponent<ScriptEnvironment>();
+        tempEnvirn.SetDirection((player.transform.position + Vector3.right - transform.position).normalized);
+
+        GameObject tempObj2 = plasma;
+        ScriptEnvironment tempEnvirn2 = tempObj2.GetComponent<ScriptEnvironment>();
+        tempEnvirn2.SetDirection((player.transform.position + Vector3.left - transform.position).normalized);
+
+        Instantiate(tempObj2, transform.position, Quaternion.identity);
+        Instantiate(tempObj, transform.position, Quaternion.identity);
+        base.Shoot();
     }
 
 }
