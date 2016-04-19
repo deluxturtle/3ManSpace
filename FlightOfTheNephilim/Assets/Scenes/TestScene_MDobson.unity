@@ -94,11 +94,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 429016, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.092062995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 429016, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.0102293445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 429016, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
       propertyPath: m_LocalPosition.z
@@ -122,7 +122,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 429016, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: speed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
@@ -198,7 +202,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470024129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.55, z: 0}
+  m_LocalPosition: {x: -2.61, y: -5.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -215,8 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  shotDamage: 0
-  shotTimer: 0
+  mySprite: {fileID: 0}
+  damage: 0
   speed: 2
 --- !u!1 &865692263
 GameObject:
@@ -273,12 +277,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 865692263}
-  m_LocalRotation: {x: 0.3901962, y: -0.03806513, z: 0.19507204, w: 0.8990245}
+  m_LocalRotation: {x: 0.014247792, y: 0.058449447, z: 0.23639901, w: 0.9697918}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1227021922
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +292,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1227021923}
   - 114: {fileID: 1227021924}
+  - 114: {fileID: 1227021925}
   m_Layer: 0
   m_Name: AIController
   m_TagString: Untagged
@@ -318,58 +323,455 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73331259fdb256249854f6ab45c3fe21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1338202793
+--- !u!114 &1227021925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1227021922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e994d1040c027a438d244fe87c6bff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MimicSoldier:
+    Style: 1
+    Class: 1
+    ShotTimerMin: 1
+    ShotTimerMax: 2
+    Health: 10
+    ShotDamage: 2
+    ShotSpeed: 8
+    ShipDamage: 5
+    Speed: 5
+    mySprite: {fileID: 21300000, guid: af9338999839908419d7182c0478c2f1, type: 3}
+    ShotRadius: 8
+    SeekRadiusMin: 2
+    SeekRadiusMax: 3
+    RespawnTimer: 0
+    DuplicationCount: 0
+  MimicKamikaze:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  Mimictank:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  ChaoticSoldier:
+    Style: 2
+    Class: 1
+    ShotTimerMin: 0.5
+    ShotTimerMax: 1
+    Health: 5
+    ShotDamage: 1
+    ShotSpeed: 7
+    ShipDamage: 5
+    Speed: 5
+    mySprite: {fileID: 21300000, guid: fc6874f8bc1f2454da366bff8eda82b8, type: 3}
+    ShotRadius: 7
+    SeekRadiusMin: 1.5
+    SeekRadiusMax: 2
+    RespawnTimer: 0
+    DuplicationCount: 0
+  ChaoticKamikaze:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  ChaoticTank:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  TrickSoldier:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  TrickKamikaze:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  TrickTank:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  DuplicatorSoldier:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  DuplicatorKamikaze:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  DuplicatorTank:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  ImmortalSoldier:
+    Style: 4
+    Class: 1
+    ShotTimerMin: 1
+    ShotTimerMax: 2
+    Health: 1
+    ShotDamage: 2
+    ShotSpeed: 10
+    ShipDamage: 5
+    Speed: 5
+    mySprite: {fileID: 21300000, guid: 9cf1b93db54196b48936bb2b2a25ec40, type: 3}
+    ShotRadius: 8
+    SeekRadiusMin: 2
+    SeekRadiusMax: 3
+    RespawnTimer: 4
+    DuplicationCount: 0
+  ImmortalKamikaze:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+  ImmortalTank:
+    Style: 0
+    Class: 0
+    ShotTimerMin: 0
+    ShotTimerMax: 0
+    Health: 0
+    ShotDamage: 0
+    ShotSpeed: 0
+    ShipDamage: 0
+    Speed: 0
+    mySprite: {fileID: 0}
+    ShotRadius: 0
+    SeekRadiusMin: 0
+    SeekRadiusMax: 0
+    RespawnTimer: 0
+    DuplicationCount: 0
+--- !u!1 &1769279809
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1338202798}
-  - 33: {fileID: 1338202797}
-  - 65: {fileID: 1338202796}
-  - 23: {fileID: 1338202795}
-  - 114: {fileID: 1338202794}
-  - 114: {fileID: 1338202799}
+  - 4: {fileID: 1769279812}
+  - 114: {fileID: 1769279811}
+  - 114: {fileID: 1769279810}
+  m_Layer: 0
+  m_Name: Enemy (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1769279810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769279809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fb3c503ccf898438c9ff7f021baa77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  mySprite: {fileID: 0}
+  damage: 0
+  shootingRadius: 0
+  shotDamage: 0
+  shotTimer: 0
+  shotSpeed: 0
+--- !u!114 &1769279811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769279809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d838f5b3cd5a49f48acce0c0364abaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  radiusOfSatisfaction: 0
+--- !u!4 &1769279812
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769279809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.84, y: 1.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2018614097}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+--- !u!1 &1793537789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1793537792}
+  - 114: {fileID: 1793537791}
+  - 114: {fileID: 1793537790}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1338202794
+  m_IsActive: 0
+--- !u!114 &1793537790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338202793}
+  m_GameObject: {fileID: 1793537789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d838f5b3cd5a49f48acce0c0364abaee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  radiusOfSatisfaction: 0
+--- !u!114 &1793537791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1793537789}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8bd1c1dbddefea4db9f1ae51b1b0e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 1
+  mySprite: {fileID: 0}
+  damage: 0
+  shootingRadius: 0
   shotDamage: 0
-  shotTimer: 5
---- !u!23 &1338202795
-MeshRenderer:
+  shotTimer: 0
+  shotSpeed: 0
+--- !u!4 &1793537792
+Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338202793}
+  m_GameObject: {fileID: 1793537789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1831785163}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+--- !u!1 &1831785162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1831785163}
+  - 212: {fileID: 1831785166}
+  - 50: {fileID: 1831785165}
+  - 114: {fileID: 1831785164}
+  m_Layer: 0
+  m_Name: EnemySprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1831785163
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1831785162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1793537792}
+  m_RootOrder: 0
+--- !u!114 &1831785164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1831785162}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3677377cffdba4ea027cec328efacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1831785165
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1831785162}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!212 &1831785166
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1831785162}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: d14650fbd81ea6243b8e5a612a926d18, type: 2}
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
@@ -378,46 +780,95 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1338202796
-BoxCollider:
+  m_Sprite: {fileID: 21300000, guid: ebedb1ec760dc4f42b237d4b207c64cf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!1 &2018614096
+GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338202793}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1338202797
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338202793}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1338202798
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2018614097}
+  - 212: {fileID: 2018614100}
+  - 50: {fileID: 2018614099}
+  - 114: {fileID: 2018614098}
+  m_Layer: 0
+  m_Name: EnemySprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2018614097
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338202793}
+  m_GameObject: {fileID: 2018614096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.14, y: 3.04, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
---- !u!114 &1338202799
+  m_Father: {fileID: 1769279812}
+  m_RootOrder: 0
+--- !u!114 &2018614098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338202793}
+  m_GameObject: {fileID: 2018614096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d838f5b3cd5a49f48acce0c0364abaee, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e3677377cffdba4ea027cec328efacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+--- !u!50 &2018614099
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2018614096}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!212 &2018614100
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2018614096}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: ebedb1ec760dc4f42b237d4b207c64cf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0

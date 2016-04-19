@@ -3,19 +3,19 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 7, 2016
-/// This is the specific behavior for trickster style enemies.
-/// This enemy will create weak copies of itself when it comes
-/// in contact with a player
+/// Last Modified: April 12, 2016
+/// Last Modified by: Michael Dobson
+/// This is the specific behavior for duplicator style enemies
+/// Duplicator enemies will split into multiple copies of itself
+/// when it's health drops to 0. The copies will be less powerful
+/// and have less health.
 /// </summary>
-public class AITrick : ScriptAI {
-
-    EnemyStyle style = EnemyStyle.Trickster;//The enemy style for this enemy group
+public class AIDuplicator : AIMimic {
 
     /// <summary>
     /// Constructor that calls base with no params
     /// </summary>
-    public AITrick() : base()
+    public AIDuplicator() : base()
     {
 
     }
@@ -27,7 +27,7 @@ public class AITrick : ScriptAI {
     /// <param name="Speed"></param>
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
-    public AITrick(float Health, float Damage, float ShotTimer) 
+    public AIDuplicator(float Health, float Damage, float ShotTimer) 
         : base(Health, Damage, ShotTimer)
     {
 
@@ -35,6 +35,7 @@ public class AITrick : ScriptAI {
 
     // Use this for initialization
     void Start () {
+        myStyle = EnemyStyle.Duplicator;
         SetupAI();
     }
 }
