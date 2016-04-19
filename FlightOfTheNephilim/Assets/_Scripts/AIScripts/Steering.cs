@@ -7,20 +7,27 @@ public struct KinematicSteeringOutput
     public float rotation;
 }
 
+/// <summary>
+/// @author Michael Dobson
+/// Last Modified: April 10, 2016
+/// Last Modified by: Michael Dobson
+/// This is the Kinematic steering script that will allow for control over the steering behaviors
+/// that are sent to the AI.
+/// </summary>
 public class Steering : MonoBehaviour
 {
     //Normal Vectors
-    Vector3 topRight = Vector3.up + Vector3.right;
-    Vector3 topLeft = Vector3.up + Vector3.left;
-    Vector3 bottomLeft = Vector3.down + Vector3.left;
-    Vector3 bottomRight = Vector3.down + Vector3.right;
+    //Vector3 topRight = Vector3.up + Vector3.right;
+    //Vector3 topLeft = Vector3.up + Vector3.left;
+    //Vector3 bottomLeft = Vector3.down + Vector3.left;
+    //Vector3 bottomRight = Vector3.down + Vector3.right;
 
-    GameObject player;
+    //GameObject player;
 
     //Run once on startup of this script
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
     }
 
     public Vector3 getSteering(Vector3 Character, Vector3 Target, float MaxSpeed, float RadiusOfSatisfaction)
@@ -30,7 +37,7 @@ public class Steering : MonoBehaviour
         if(distanceToTarget.magnitude > RadiusOfSatisfaction)
         {
             //seek the target, return the seek
-            return getSeek(Character, Target, MaxSpeed, RadiusOfSatisfaction, 2f);
+            return getSeek(Character, Target, MaxSpeed, RadiusOfSatisfaction, 1f);
         }
 
         //if we are inside the radius of satisfaction, 
