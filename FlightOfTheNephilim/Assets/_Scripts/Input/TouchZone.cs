@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -21,6 +22,8 @@ public class TouchZone : MonoBehaviour {
 	RectTransform myTransform;
 	Rect lastSize;
 
+	public Image joystick;
+
 	#endregion
 
 	void OnEnable() {
@@ -35,12 +38,25 @@ public class TouchZone : MonoBehaviour {
 	}
 
 	void Update() {
-		if (myTransform.rect != lastSize) {
-			gameObject.GetComponent<BoxCollider2D>().size = new Vector2(Math.Abs(myTransform.rect.x) * 2,
-			                                                            Mathf.Abs(myTransform.rect.y) * 2);
+		UpdateCollider();
+
+		if ( SwipeHandler.s.CurrentSwipes > 0 ) {
+			//print("hi");
+			foreach ( Swipe swipe in SwipeHandler.s.swipes ) {
+				if ( swipe.startingZone == this ) {
+					print(swipe.Distance);
+				}
+			}
+		}
+	}
+
+
+	void UpdateCollider() {
+		if ( myTransform.rect != lastSize ) {
+			gameObject.GetComponent<BoxCollider2D>().size = new Vector2( Math.Abs( myTransform.rect.x ) * 2,
+																		Mathf.Abs( myTransform.rect.y ) * 2 );
 			lastSize = myTransform.rect;
 			//print("resizing");
 		}
 	}
-
 }
