@@ -70,11 +70,6 @@ public class ScriptEnvironment : ScriptEnemy {
         }
     }
 
-    public void SetDirection(Vector3 Direction)
-    {
-        travelDirection = Direction;
-    }
-
     void OnDrawGizmos()
     {
         //Gizmos.color = Color.yellow;

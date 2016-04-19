@@ -3,13 +3,15 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 14, 2016
+/// Last Modified: April 19, 2016
 /// Last Modified by: Michael Dobson
 /// This is the specific behavior for Chaotic style enemies
 /// Chaotic enemies will behave in a bullet hell style shooter
 /// while trying to attack the player.
 /// </summary>
 public class AIChaotic : ScriptAI {
+
+    float spreadAngle = 10f;
 
     /// <summary>
     /// Constructor that calls base with no params
@@ -41,17 +43,16 @@ public class AIChaotic : ScriptAI {
 
     public override void Shoot()
     {
-        Debug.Log("Override Shooting");
+        //Debug.Log("Override Shooting");
+
         GameObject tempObj = plasma;
         ScriptEnvironment tempEnvirn = tempObj.GetComponent<ScriptEnvironment>();
-        tempEnvirn.SetDirection((player.transform.position + Vector3.right - transform.position).normalized);
 
         GameObject tempObj2 = plasma;
         ScriptEnvironment tempEnvirn2 = tempObj2.GetComponent<ScriptEnvironment>();
-        tempEnvirn2.SetDirection((player.transform.position + Vector3.left - transform.position).normalized);
 
-        Instantiate(tempObj2, transform.position, Quaternion.identity);
-        Instantiate(tempObj, transform.position, Quaternion.identity);
+        Instantiate(tempObj, transform.position, Quaternion.Euler(0, 0, spreadAngle));
+        Instantiate(tempObj2, transform.position, Quaternion.Euler(0, 0, -spreadAngle));
         base.Shoot();
     }
 

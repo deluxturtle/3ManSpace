@@ -182,7 +182,7 @@ public class ScriptAI : ScriptEnemy {
 
     public virtual void Shoot()
     {
-        Debug.Log("Base Shooting");
+        //Debug.Log("Base Shooting");
         Instantiate(plasma, transform.position, Quaternion.identity);
     }
 

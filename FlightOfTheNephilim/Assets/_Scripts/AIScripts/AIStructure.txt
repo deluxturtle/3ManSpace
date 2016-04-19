@@ -1,5 +1,5 @@
 @author Michael Dobson
-Last Modified: April 14, 2016
+Last Modified: April 19, 2016
 Last Modified by: Michael Dobson
 This is the data structure for all AI scripts. This includes inheratance, variables, and methods.
 This file is used to keep track of the larger number of connections in the AI structure.
@@ -21,8 +21,8 @@ AIMimic: Inherate ScriptAI
 	Methods: 
 
 AIChaotic: Inherate ScriptAI
-	Variables:
-	Methods:
+	Variables: SpreadAngle
+	Methods: overrid Shoot
 
 AITrick: Inherate ScriptAI
 	Variables:
@@ -30,11 +30,11 @@ AITrick: Inherate ScriptAI
 
 AIDuplicator: Inherate AIMimic
 	Variables: Duplication Count
-	Methods: Ovverride Destruction
+	Methods: Override Destruction
 
 AIImmortal: Inherate AIMimic
 	Variables: Respawn Counter
-	Methods:Override Destruction
+	Methods: Override Destruction
 
 ====================================================================
 
