@@ -13,7 +13,7 @@ public class SwipeTest : MonoBehaviour {
 
 	#region Fields
 	
-	public TouchZone movePad;
+	public SwipeJoystick movePad;
 	public float speed = 0.01f;
 
 	#endregion
@@ -23,16 +23,6 @@ public class SwipeTest : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (SwipeHandler.s.CurrentSwipes > 0) {
-			//print("hi");
-			foreach (Swipe swipe in SwipeHandler.s.swipes) {
-				if (swipe.startingZone == movePad) {
-					//print(swipe.Distance);
-
-					transform.Translate(swipe.Velocity2D * speed * Time.deltaTime);
-
-				}
-			}
-		}
+		transform.Translate(movePad.joystickVelocity * speed * Time.deltaTime);
 	}
 }

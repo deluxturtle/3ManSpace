@@ -14,6 +14,7 @@ public class SwipeJoystick : TouchZone {
 	#region Fields
 
 	public Image joystick;
+	public Vector2 joystickVelocity;
 
 	#endregion
 
@@ -33,11 +34,17 @@ public class SwipeJoystick : TouchZone {
 			//print("hi");
 			foreach (Swipe swipe in SwipeHandler.s.swipes) {
 				if (swipe.startingZone == this) {
-					joystick.rectTransform.anchoredPosition = swipe.Velocity2D;
+					if (swipe.Velocity2D.magnitude <= maxRadius) {
+						joystick.rectTransform.anchoredPosition = swipe.Velocity2D;
+					} else {
+						joystick.rectTransform.anchoredPosition = swipe.Velocity2D.normalized * maxRadius;
+					}
+					joystickVelocity = joystick.rectTransform.anchoredPosition - Vector2.zero;
 				}
 			}
 		} else {
 			joystick.rectTransform.anchoredPosition = Vector2.zero;
+			joystickVelocity = Vector2.zero;
 		}
 	}
 }
