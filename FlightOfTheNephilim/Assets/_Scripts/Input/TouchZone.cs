@@ -22,36 +22,29 @@ public class TouchZone : MonoBehaviour {
 	RectTransform myTransform;
 	Rect lastSize;
 
-	public Image joystick;
 
 	#endregion
 
-	void OnEnable() {
+	protected void OnEnable() {
+		print( "touchzone on enable" );
 		id = Random.Range(Int32.MinValue, Int32.MaxValue);
 	}
 
-	void Start() {
+	protected void Start() {
 		myTransform = GetComponent<RectTransform>();
 		lastSize = myTransform.rect;
 		gameObject.GetComponent<BoxCollider2D>().size = new Vector2( Math.Abs( myTransform.rect.x ) * 2,
 																		Mathf.Abs( myTransform.rect.y ) * 2 );
 	}
 
-	void Update() {
+	protected void Update() {
 		UpdateCollider();
 
-		if ( SwipeHandler.s.CurrentSwipes > 0 ) {
-			//print("hi");
-			foreach ( Swipe swipe in SwipeHandler.s.swipes ) {
-				if ( swipe.startingZone == this ) {
-					print(swipe.Distance);
-				}
-			}
-		}
+
 	}
 
 
-	void UpdateCollider() {
+	protected void UpdateCollider() {
 		if ( myTransform.rect != lastSize ) {
 			gameObject.GetComponent<BoxCollider2D>().size = new Vector2( Math.Abs( myTransform.rect.x ) * 2,
 																		Mathf.Abs( myTransform.rect.y ) * 2 );
