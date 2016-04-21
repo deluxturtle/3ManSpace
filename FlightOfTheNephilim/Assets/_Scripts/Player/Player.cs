@@ -13,10 +13,14 @@ public class Player : MonoBehaviour {
     public float maxSpeed = 5f;
     public float rotateSpeed = 0.5f;
 
+    [Header("Shooting Settings")]
+    public float shootDeadZone = 0.19f;
+
     public GameObject shipSprite;
 
-    private Vector3 inputDirection = Vector3.zero;
-    private Vector3 velocity;
+    private Vector2 inputDirection = Vector2.zero;
+    private Vector2 shootingDirection = Vector2.zero;
+    private Vector2 velocity;
 
     private Animator animator;
 
@@ -29,7 +33,13 @@ public class Player : MonoBehaviour {
 	void Update ()
     {
 
-        inputDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        shootingDirection = new Vector2(Input.GetAxis("Horizontal2"), -Input.GetAxis("Vertical2"));
+        
+        if(shootingDirection.magnitude > shootDeadZone)
+        {
+
+        }
 
         if(inputDirection.magnitude != 0)
         {
@@ -46,7 +56,7 @@ public class Player : MonoBehaviour {
         {
             float tempMag = velocity.magnitude;
             tempMag -= maxSpeed;
-            Vector3 newVelocity = velocity.normalized;
+            Vector2 newVelocity = velocity.normalized;
             newVelocity *= tempMag;
             velocity -= newVelocity;
         }
