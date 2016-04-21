@@ -3,8 +3,6 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 21, 2016
-/// Last Modified by: Andrew Seba
 /// This script will be the AI that environmental enemies
 /// will use to perform actions in the game.
 /// </summary>
@@ -13,8 +11,10 @@ public class ScriptEnvironment : ScriptEnemy {
     Vector3 travelDirection; //the direction that we are going to be traveling
     public float speed; //Speed this object moves
 
+    Vector3 targetDirection = Vector3.zero;
+
     //internal use only
-    float outOfPlay = 40f;
+    float outOfPlay = 20f;
 
     /// <summary>
     /// Constructor that calls base contstuctor with no params
@@ -31,17 +31,28 @@ public class ScriptEnvironment : ScriptEnemy {
     /// <param name="Speed"></param>
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
-    public ScriptEnvironment(float Health, float Speed) 
+    public ScriptEnvironment(float Health, float Speed, float Damage, float ShotTimer) 
         : base (Health)
     {
         speed = Speed;
     }
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         FindPlayer();
-        travelDirection = (player.transform.position - transform.position).normalized;
-	}
+
+        //Andrew
+        if (targetDirection == Vector3.zero)
+        {
+            
+            travelDirection = (player.transform.position - transform.position).normalized;
+        }
+        else
+        {
+            travelDirection = (transform.position + targetDirection - transform.position).normalized;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -62,17 +73,26 @@ public class ScriptEnvironment : ScriptEnemy {
     /// </summary>
     void CheckPosition()
     {
-        if (transform.position.x > outOfPlay || transform.position.x < -outOfPlay ||
-            transform.position.y > outOfPlay || transform.position.y < -outOfPlay)
+        if (transform.position.x > player.transform.position.x + outOfPlay || transform.position.x < player.transform.position.x - outOfPlay ||
+            transform.position.y > player.transform.position.y + outOfPlay || transform.position.y < player.transform.position.y - outOfPlay)
         {
             Debug.Log("Object removed for being outside of playing field");
             Destruction();
         }
     }
 
-    void OnDrawGizmos()
+    /// <summary>
+    /// Sets the initial direction. (Call Before its start begins.)
+    /// Author: Andrew
+    /// </summary>
+    /// <param name="pDir">Target Direction</param>
+    public void SetTargetDirection(Vector3 pDir)
     {
-        //Gizmos.color = Color.yellow;
-        //Gizmos.DrawLine(transform.position, (transform.position + travelDirection.normalized) * 1.25f);
+        targetDirection = pDir;
+    }
+
+    public void SetSpeed(float pSpeed)
+    {
+        speed += pSpeed;
     }
 }

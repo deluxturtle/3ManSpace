@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScriptCameraZoom : MonoBehaviour {
+public class StarSimulation : MonoBehaviour {
 
-    Player player;
+    ParticleSystem stars;
 
 	// Use this for initialization
 	void Start ()
     {
-        player.GetComponentInParent<Player>();
-        
+        //stars = transform.FindChild("StarParticles").GetComponent<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
