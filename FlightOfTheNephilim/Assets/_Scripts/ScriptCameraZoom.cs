@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Author: Andrew Seba
+/// Description: Camera zooms out when going fast.
+/// </summary>
 public class ScriptCameraZoom : MonoBehaviour {
 
 

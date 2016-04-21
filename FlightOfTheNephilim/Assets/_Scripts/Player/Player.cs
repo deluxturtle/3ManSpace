@@ -9,7 +9,8 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 
-    [Header("Controller Settings")]
+    [Header("Player Settings")]
+    public int health = 100;
     [Tooltip("Impulse change rate in speed.")]
     public float speed = 0.2f;
     [Tooltip("Max Ship Speed.")]
