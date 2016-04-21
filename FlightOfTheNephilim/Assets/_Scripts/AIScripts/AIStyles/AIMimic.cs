@@ -3,14 +3,13 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 7, 2016
+/// Last Modified: April 12, 2016
+/// Last Modified by: Michael Dobson
 /// This is the specific behavior for Mimic style enemies
 /// Mimic enemies will be a simple style enemy that just attacks
 /// in a standard behavior.
 /// </summary>
 public class AIMimic : ScriptAI {
-
-    EnemyStyle style = EnemyStyle.Mimic;//The enemy style for this enemy group
 
     /// <summary>
     /// Constructor that calls base with no params
@@ -35,6 +34,7 @@ public class AIMimic : ScriptAI {
 
 	// Use this for initialization
 	void Start () {
+        myStyle = EnemyStyle.Mimic;
         SetupAI();
     }
 }
