@@ -9,15 +9,39 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 
-    public float speed = 0.1f;
+    [Header("Player Settings")]
+    public int health = 100;
+    [Tooltip("Impulse change rate in speed.")]
+    public float speed = 0.2f;
+    [Tooltip("Max Ship Speed.")]
     public float maxSpeed = 5f;
+    [Tooltip("How fast the ship rotates toward target direction.")]
     public float rotateSpeed = 0.5f;
 
+    [Header("Shooting Settings")]
+    [Tooltip("Place the bullet prefab here.")]
+    public GameObject bulletPrefab;
+    [Tooltip("Time between shots.")]
+    public float shootRate = 0.5f;
+    [Tooltip("How fast the bullet will move.")]
+    public float bulletSpeed = 6;
+    [Tooltip("How much damage the bullet will do.")]
+    public float bulletDamage = 10f;
+    [Tooltip("How much you have to move the joystick before it will start fireing.")]
+    public float shootDeadZone = 0.19f;
+
+    [Header("Other")]
+    [Tooltip("Drag the model or sprie that we want to be rotating here.")]
     public GameObject shipSprite;
 
-    private Vector3 inputDirection = Vector3.zero;
-    private Vector3 velocity;
+    //Hidden
+    [HideInInspector]
+    public Vector2 shipVelocity;
 
+
+    private Vector2 inputDirection = Vector2.zero;
+    private Vector2 shootingDirection = Vector2.zero;
+    private bool canShoot = true;
     private Animator animator;
 
     void Start()
@@ -29,8 +53,26 @@ public class Player : MonoBehaviour {
 	void Update ()
     {
 
-        inputDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        shootingDirection = new Vector2(Input.GetAxis("Horizontal2"), -Input.GetAxis("Vertical2"));
+        
+        //Shoot
+        if(shootingDirection.magnitude > shootDeadZone)
+        {
+            if (canShoot)
+            {
+                //TODO implement fire rate.
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+                bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized);
+                bullet.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
+                //bullet.GetComponent<ScriptEnvironment>().sp
+                canShoot = false;
+                Invoke("EnableShot", shootRate);
+            }
 
+        }
+
+        //Move
         if(inputDirection.magnitude != 0)
         {
             float angle = ((Mathf.Atan2(inputDirection.y, inputDirection.x) * Mathf.Rad2Deg) - 90);
@@ -39,22 +81,27 @@ public class Player : MonoBehaviour {
 
         }
 
-        velocity += inputDirection * speed * Time.deltaTime;
+        shipVelocity += inputDirection * speed * Time.deltaTime;
 
         //Mike's limiter
-        if(velocity.magnitude > maxSpeed)
+        if(shipVelocity.magnitude > maxSpeed)
         {
-            float tempMag = velocity.magnitude;
+            float tempMag = shipVelocity.magnitude;
             tempMag -= maxSpeed;
-            Vector3 newVelocity = velocity.normalized;
+            Vector2 newVelocity = shipVelocity.normalized;
             newVelocity *= tempMag;
-            velocity -= newVelocity;
+            shipVelocity -= newVelocity;
         }
 
-        transform.Translate(velocity * Time.deltaTime);
+        transform.Translate(shipVelocity * Time.deltaTime);
         //Debug.DrawRay(transform.position, velocity);
 
         animator.SetFloat("thrust", inputDirection.magnitude);
 
+    }
+
+    void EnableShot()
+    {
+        canShoot = true;
     }
 }

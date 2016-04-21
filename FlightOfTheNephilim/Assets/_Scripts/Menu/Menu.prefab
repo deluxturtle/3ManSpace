@@ -637,6 +637,7 @@ GameObject:
   - 114: {fileID: 11404140}
   - 114: {fileID: 11426656}
   - 114: {fileID: 11450116}
+  - 114: {fileID: 11494040}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1567,7 +1568,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11494040}
         m_MethodName: MenuButtonSettings
         m_Mode: 1
         m_Arguments:
@@ -2077,7 +2078,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11494040}
         m_MethodName: MenuButtonCredits
         m_Mode: 1
         m_Arguments:
@@ -2194,7 +2195,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11494040}
         m_MethodName: MenuButtonHelp
         m_Mode: 1
         m_Arguments:
@@ -2388,7 +2389,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11494040}
         m_MethodName: MenuButtonQuit
         m_Mode: 1
         m_Arguments:
@@ -3054,7 +3055,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11494040}
         m_MethodName: MenuButtonLoad
         m_Mode: 1
         m_Arguments:
@@ -3459,7 +3460,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11494040}
         m_MethodName: MenuButtonNew
         m_Mode: 1
         m_Arguments:
@@ -3771,7 +3772,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 149938}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!114 &11487282
@@ -3855,6 +3856,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11494040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f932bc8c5fde6de4786213fbe60564ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 11450116}
 --- !u!114 &11495070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4387,6 +4400,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
