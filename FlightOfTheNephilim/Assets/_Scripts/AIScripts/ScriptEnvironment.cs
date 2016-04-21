@@ -3,6 +3,8 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
+/// Last Modified: April 21, 2016		
+/// Last Modified by: Andrew Seba
 /// This script will be the AI that environmental enemies
 /// will use to perform actions in the game.
 /// </summary>
@@ -14,7 +16,7 @@ public class ScriptEnvironment : ScriptEnemy {
     Vector3 targetDirection = Vector3.zero;
 
     //internal use only
-    float outOfPlay = 20f;
+    float outOfPlay = 40f;
 
     /// <summary>
     /// Constructor that calls base contstuctor with no params
@@ -31,7 +33,7 @@ public class ScriptEnvironment : ScriptEnemy {
     /// <param name="Speed"></param>
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
-    public ScriptEnvironment(float Health, float Speed, float Damage, float ShotTimer) 
+    public ScriptEnvironment(float Health, float Speed) 
         : base (Health)
     {
         speed = Speed;
@@ -89,10 +91,5 @@ public class ScriptEnvironment : ScriptEnemy {
     public void SetTargetDirection(Vector3 pDir)
     {
         targetDirection = pDir;
-    }
-
-    public void SetSpeed(float pSpeed)
-    {
-        speed += pSpeed;
     }
 }
