@@ -32,7 +32,7 @@ public class ScriptEnvironment : ScriptEnemy {
     /// <param name="Damage"></param>
     /// <param name="ShotTimer"></param>
     public ScriptEnvironment(float Health, float Speed, float Damage, float ShotTimer) 
-        : base (Health, Damage, ShotTimer)
+        : base (Health)
     {
         speed = Speed;
     }
@@ -73,8 +73,8 @@ public class ScriptEnvironment : ScriptEnemy {
     /// </summary>
     void CheckPosition()
     {
-        if (player.transform.position.x > player.transform.position.x + outOfPlay || player.transform.position.x < player.transform.position.x - outOfPlay ||
-            player.transform.position.y > player.transform.position.y + outOfPlay || player.transform.position.y < player.transform.position.y - outOfPlay)
+        if (transform.position.x > player.transform.position.x + outOfPlay || transform.position.x < player.transform.position.x - outOfPlay ||
+            transform.position.y > player.transform.position.y + outOfPlay || transform.position.y < player.transform.position.y - outOfPlay)
         {
             Debug.Log("Object removed for being outside of playing field");
             Destruction();

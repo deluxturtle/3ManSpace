@@ -20,6 +20,12 @@ public class Player : MonoBehaviour {
     [Header("Shooting Settings")]
     [Tooltip("Place the bullet prefab here.")]
     public GameObject bulletPrefab;
+    [Tooltip("Time between shots.")]
+    public float shootRate = 0.5f;
+    [Tooltip("How fast the bullet will move.")]
+    public float bulletSpeed = 6;
+    [Tooltip("How much damage the bullet will do.")]
+    public float bulletDamage = 10f;
     [Tooltip("How much you have to move the joystick before it will start fireing.")]
     public float shootDeadZone = 0.19f;
 
@@ -27,10 +33,14 @@ public class Player : MonoBehaviour {
     [Tooltip("Drag the model or sprie that we want to be rotating here.")]
     public GameObject shipSprite;
 
+    //Hidden
+    [HideInInspector]
+    public Vector2 shipVelocity;
+
+
     private Vector2 inputDirection = Vector2.zero;
     private Vector2 shootingDirection = Vector2.zero;
-    private Vector2 velocity;
-
+    private bool canShoot = true;
     private Animator animator;
 
     void Start()
@@ -48,10 +58,16 @@ public class Player : MonoBehaviour {
         //Shoot
         if(shootingDirection.magnitude > shootDeadZone)
         {
-            //TODO implement fire rate.
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
-            bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized);
-            bullet.GetComponent<ScriptEnvironment>().SetSpeed(velocity.magnitude + 5);
+            if (canShoot)
+            {
+                //TODO implement fire rate.
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+                bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized);
+                bullet.GetComponent<ScriptEnvironment>().SetSpeed(shipVelocity.magnitude + bulletSpeed);
+                //bullet.GetComponent<ScriptEnvironment>().sp
+                canShoot = false;
+                Invoke("EnableShot", shootRate);
+            }
 
         }
 
@@ -64,22 +80,27 @@ public class Player : MonoBehaviour {
 
         }
 
-        velocity += inputDirection * speed * Time.deltaTime;
+        shipVelocity += inputDirection * speed * Time.deltaTime;
 
         //Mike's limiter
-        if(velocity.magnitude > maxSpeed)
+        if(shipVelocity.magnitude > maxSpeed)
         {
-            float tempMag = velocity.magnitude;
+            float tempMag = shipVelocity.magnitude;
             tempMag -= maxSpeed;
-            Vector2 newVelocity = velocity.normalized;
+            Vector2 newVelocity = shipVelocity.normalized;
             newVelocity *= tempMag;
-            velocity -= newVelocity;
+            shipVelocity -= newVelocity;
         }
 
-        transform.Translate(velocity * Time.deltaTime);
+        transform.Translate(shipVelocity * Time.deltaTime);
         //Debug.DrawRay(transform.position, velocity);
 
         animator.SetFloat("thrust", inputDirection.magnitude);
 
+    }
+
+    void EnableShot()
+    {
+        canShoot = true;
     }
 }
