@@ -1,5 +1,5 @@
 @author Michael Dobson
-Last Modified: April 19, 2016
+Last Modified: April 21, 2016
 Last Modified by: Michael Dobson
 This is the data structure for all AI scripts. This includes inheratance, variables, and methods.
 This file is used to keep track of the larger number of connections in the AI structure.
@@ -67,4 +67,8 @@ AIKamikaze:
 
 EnemyController:
 	Variables: EnemyData, (Soldier, Kamikaze and Tank Class for each enemy style)
+	Methods:
+
+EnemySpawner:
+	Variables:
 	Methods:
