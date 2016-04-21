@@ -6610,9 +6610,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 457402, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: speed
+      value: 9.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: maxSpeed
+      value: 15.54
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}

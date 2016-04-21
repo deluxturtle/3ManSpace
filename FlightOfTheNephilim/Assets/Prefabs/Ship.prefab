@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.11, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 429016}
@@ -198,6 +198,8 @@ MonoBehaviour:
   speed: 5
   maxSpeed: 20
   rotateSpeed: 8
+  bulletPrefab: {fileID: 158024, guid: 5449e2a1a1afb0d4399e4827f9fa6c0c, type: 2}
+  shootDeadZone: 0.19
   shipSprite: {fileID: 191098}
 --- !u!124 &12498590
 Behaviour:
