@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
                 //TODO implement fire rate.
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
                 bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized);
-                bullet.GetComponent<ScriptEnvironment>().SetSpeed(shipVelocity.magnitude + bulletSpeed);
+                bullet.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
                 //bullet.GetComponent<ScriptEnvironment>().sp
                 canShoot = false;
                 Invoke("EnableShot", shootRate);
