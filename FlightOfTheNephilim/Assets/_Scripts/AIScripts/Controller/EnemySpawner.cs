@@ -9,32 +9,65 @@ using System.Collections;
 /// </summary>
 public class EnemySpawner : MonoBehaviour {
 
-    GameObject EnemyPrefab;
+    public GameObject EnemyPrefab;
+
+    GameObject TankEnemy;
+    GameObject KamikazeEnemy;
+    GameObject SoldierEnemy;
     float spawnDelay = 4f;
+    float spawnRadius = 25f;
+
+    GameObject player;
 
 	// Use this for initialization
 	void Start () {
+
+        //Debug.Log(EnemyClassType.Kamikaze.GetHashCode());
+
         GameObject tempResource =  Instantiate( Resources.Load("Prefabs/Enemy")) as GameObject;
         
         EnemyPrefab = tempResource;
         Destroy(tempResource);
 
-        EnemyPrefab.AddComponent<AIMimic>();
-        EnemyPrefab.AddComponent<ClassSoldier>();
-        StartCoroutine(SpawnEnemy(spawnDelay, EnemyStyle.Mimic, EnemyClassType.Soldier));
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+        TankEnemy = EnemyPrefab;
+        KamikazeEnemy = EnemyPrefab;
+        SoldierEnemy = EnemyPrefab;
+
+        TankEnemy.AddComponent<ClassTank>();
+        KamikazeEnemy.AddComponent<ClassKamikaze>();
+        SoldierEnemy.AddComponent<ClassSoldier>();
+
+        int enemyStyle = Random.Range(0, 2);
+        switch(enemyStyle)
+        {
+            case 0:
+                TankEnemy.AddComponent<AIMimic>();
+                KamikazeEnemy.AddComponent<AIMimic>();
+                SoldierEnemy.AddComponent<AIMimic>();
+                break;
+            case 1:
+                TankEnemy.AddComponent<AIChaotic>();
+                KamikazeEnemy.AddComponent<AIChaotic>();
+                SoldierEnemy.AddComponent<AIChaotic>();
+                break;
+            case 2:
+                TankEnemy.AddComponent<AIImmortal>();
+                KamikazeEnemy.AddComponent<AIImmortal>();
+                SoldierEnemy.AddComponent<AIImmortal>();
+                break;
+        }
+
+        StartCoroutine(SpawnEnemy(spawnDelay, SoldierEnemy));
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 
-    IEnumerator SpawnEnemy(float SpawnDelay, EnemyStyle enemyStyle, EnemyClassType enemyClass)
+    public IEnumerator SpawnEnemy(float SpawnDelay, GameObject mySpawner)
     {    
         while(enabled)
         {
             yield return new WaitForSeconds(SpawnDelay);
-            Instantiate(EnemyPrefab, Vector3.zero, Quaternion.identity);
+            Vector2 tempV2 = new Vector2(player.transform.position.x, player.transform.position.y);
+            Instantiate(mySpawner, (Random.insideUnitCircle * spawnRadius) + tempV2, Quaternion.identity);
         }
     }
 }
