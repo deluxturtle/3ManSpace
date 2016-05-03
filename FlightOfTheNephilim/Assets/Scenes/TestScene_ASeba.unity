@@ -5706,6 +5706,14 @@ Prefab:
       propertyPath: shootStick
       value: 
       objectReference: {fileID: 1357180135}
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: speed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11464362, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: zoomSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
   m_IsPrefabParent: 0
