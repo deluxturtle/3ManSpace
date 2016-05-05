@@ -14,8 +14,9 @@ public class PU_Health : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
+            other.GetComponent<Player>().health += healthBonus;
             Destroy(gameObject);
-
+            
         }
     }
 }

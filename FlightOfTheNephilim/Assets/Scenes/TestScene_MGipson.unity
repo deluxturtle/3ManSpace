@@ -5770,7 +5770,23 @@ Prefab:
     - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 165054, guid: 572a42bcab3d5b84294b66c3c1530d9d, type: 2}
+      objectReference: {fileID: 158024, guid: 5449e2a1a1afb0d4399e4827f9fa6c0c, type: 2}
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: rotateSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: shootRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: shipSprite
+      value: 
+      objectReference: {fileID: 738260056}
     m_RemovedComponents:
     - {fileID: 6042564, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
