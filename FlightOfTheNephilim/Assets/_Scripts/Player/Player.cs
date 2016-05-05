@@ -69,7 +69,7 @@ public class Player : MonoBehaviour {
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
                 bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized + inputDirection.normalized);
                 bullet.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
-                //bullet.GetComponent<ScriptEnvironment>().sp
+                bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0,0,)
                 canShoot = false;
                 Invoke("EnableShot", shootRate);
             }

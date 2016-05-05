@@ -7,6 +7,7 @@ using System.Collections;
 /// </summary>
 public class PU_Health : MonoBehaviour {
 
+    [Tooltip("Amount of ")]
     public int healthBonus = 15;
 
 	void OnTriggerEnter2D(Collider2D other)
