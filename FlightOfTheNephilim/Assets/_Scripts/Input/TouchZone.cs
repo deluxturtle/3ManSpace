@@ -25,26 +25,26 @@ public class TouchZone : MonoBehaviour {
 
 	#endregion
 
-	protected void OnEnable() {
-		print( "touchzone on enable" );
+	protected virtual void OnEnable() {
+		//print( "touchzone on enable" );
 		id = Random.Range(Int32.MinValue, Int32.MaxValue);
 	}
 
-	protected void Start() {
+	protected virtual void Start() {
 		myTransform = GetComponent<RectTransform>();
 		lastSize = myTransform.rect;
 		gameObject.GetComponent<BoxCollider2D>().size = new Vector2( Math.Abs( myTransform.rect.x ) * 2,
 																		Mathf.Abs( myTransform.rect.y ) * 2 );
 	}
 
-	protected void Update() {
+	protected virtual void Update() {
 		UpdateCollider();
 
 
 	}
 
 
-	protected void UpdateCollider() {
+	protected virtual void UpdateCollider() {
 		if ( myTransform.rect != lastSize ) {
 			gameObject.GetComponent<BoxCollider2D>().size = new Vector2( Math.Abs( myTransform.rect.x ) * 2,
 																		Mathf.Abs( myTransform.rect.y ) * 2 );
