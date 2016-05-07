@@ -5,7 +5,7 @@ This is the data structure for all AI scripts. This includes inheratance, variab
 This file is used to keep track of the larger number of connections in the AI structure.
 
 ScriptEnemy:
-	Variables: Health, Player, Controller, MySprite, Damage
+	Variables: Health, Player, Controller, MySprite, Damage, Indestructable
 	Methods: TakeDamage, Destruction, FindPlayer, FindController
 
 ScriptAI : Inherate ScriptEnemy
