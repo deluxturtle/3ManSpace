@@ -1028,8 +1028,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9, y: -21}
-  m_SizeDelta: {x: -162, y: -272.5}
+  m_AnchoredPosition: {x: -5, y: -65.244}
+  m_SizeDelta: {x: -44, y: -272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &545580085
 MonoBehaviour:
@@ -1058,16 +1058,15 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "lpc assets\r\ntilesets were modified aswell as used as is from http://opengameart.org/content/lpc-tile-atlas
-    under creative commons http://creativecommons.org/licenses/by-sa/3.0/\n\nLanea
-    Zimmerman (AKA Sharm) -princess\r sprites\nStephen Challener (AKA Redshrike) -male\r
-    sprites\nManuel Riecke (AKA MrBeast) -soldier sprites"
+  m_Text: "\tSpace Shooter (Redux, plus fonts and sounds) by\n Kenney Vleugels (www.kenney.nl)\r\r\n----------------------------\nLicense
+    (CC0)\r\n\t       http://creativecommons.org/publicdomain/zero/1.0/\n\nSounds
+    and music by Lamont Miller "
 --- !u!222 &545580086
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1394,8 +1393,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22, y: 116}
-  m_SizeDelta: {x: 403, y: 226}
+  m_AnchoredPosition: {x: 0, y: 132}
+  m_SizeDelta: {x: 358, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035972960
 MonoBehaviour:
@@ -1424,15 +1423,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 2
-  m_Text: 'Programming and Design by Matt Gipson
-
-    Graphics'
+    m_LineSpacing: 1.12
+  m_Text: "Programming and Design by \nMike Dobson \nMatt Gipson\nAndrew Seba"
 --- !u!222 &1035972961
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1790,7 +1787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1262859005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2190,7 +2187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1633126433
 MonoBehaviour:
   m_ObjectHideFlags: 0
