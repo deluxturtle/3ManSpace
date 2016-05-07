@@ -13,7 +13,7 @@ public enum EnemyStyle
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 14, 2016
+/// Last Modified: April 21, 2016
 /// Last Modified by: Michael Dobson
 /// This is the controller for Enemy AI behavior.
 /// </summary>
@@ -85,7 +85,9 @@ public class ScriptAI : ScriptEnemy {
     {
         try
         {
-            plasma = Resources.Load("Prefabs/Plasma") as GameObject;
+            GameObject temp = Instantiate(Resources.Load("Prefabs/Plasma")) as GameObject;
+            plasma = temp;
+            Destroy(temp);
         }
         catch
         {
@@ -97,6 +99,7 @@ public class ScriptAI : ScriptEnemy {
             ScriptEnvironment tempEnvironment = plasma.GetComponent<ScriptEnvironment>();
             tempEnvironment.speed = shotSpeed;
             tempEnvironment.damage = shotDamage;
+            tempEnvironment.indestructable = true;
         }
         catch
         {
