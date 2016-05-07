@@ -99,9 +99,7 @@ public class Menu : MonoBehaviour {
 
 public enum MenuState {
 	MenuNew,
-	MenuLoad,
 	MenuHelp,
-	MenuSettings,
 	MenuCredits,
 	MenuQuit
 }
