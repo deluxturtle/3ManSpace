@@ -18,14 +18,6 @@ public class SwipeJoystick : TouchZone {
 
 	#endregion
 
-	protected override void OnEnable() {
-		base.OnEnable();
-	}
-
-	protected override void Start() {
-		base.Start();
-	}
-
 	protected override void Update() {
 		base.Update();
 
@@ -40,6 +32,7 @@ public class SwipeJoystick : TouchZone {
 						} else {
 							joystick.rectTransform.anchoredPosition = swipe.Velocity2D.normalized * maxRadius;
 						}
+
 						joystickVelocity = joystick.rectTransform.anchoredPosition - Vector2.zero;
 					} else {
 						Reset();
