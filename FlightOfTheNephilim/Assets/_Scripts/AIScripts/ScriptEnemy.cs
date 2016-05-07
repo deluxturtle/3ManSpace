@@ -3,7 +3,7 @@ using System.Collections;
 
 /// <summary>
 /// @author Michael Dobson
-/// Last Modified: April 10, 2016
+/// Last Modified: April 21, 2016
 /// Last Modified by: Michael Dobson
 /// This is the basic constructor for an enemy,
 /// this constcructor will be overriden by subsequent scripts
@@ -22,6 +22,8 @@ public class ScriptEnemy : MonoBehaviour {
     public Sprite mySprite; //The sprite that represents this enemy
     [Tooltip("The amount of damage caused if we collide with the player")]
     public float damage; //How much damage this enemy does if we collide with the enemy
+
+    public bool indestructable = false;
 
     //Enemy References
     protected GameObject player; //reference of the player for the enemy
@@ -72,6 +74,17 @@ public class ScriptEnemy : MonoBehaviour {
     public virtual void Destruction()
     {
         Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(!indestructable)
+        {
+            if(other.tag == "PBullet")
+            {
+                TakeDamage(other.GetComponent<ScriptEnvironment>().damage);
+            }
+        }
     }
 
     /// <summary>
