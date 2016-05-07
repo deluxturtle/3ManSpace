@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
     public float shootDeadZone = 0.19f;
 
     [Header("Other")]
+    public GameObject shieldPrefab;
     [Tooltip("Drag the model or sprie that we want to be rotating here.")]
     public GameObject shipSprite;
 	[Tooltip("The joystick used for Moving")]
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour {
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
                 bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized + inputDirection.normalized);
                 bullet.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
-                //bullet.GetComponent<ScriptEnvironment>().sp
+                //bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, );
                 canShoot = false;
                 Invoke("EnableShot", shootRate);
             }

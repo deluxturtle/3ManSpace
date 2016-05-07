@@ -27,6 +27,8 @@ GameObject:
   - 114: {fileID: 11403562}
   - 95: {fileID: 9506078}
   - 114: {fileID: 11463952}
+  - 50: {fileID: 5052112}
+  - 60: {fileID: 6062422}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -43,6 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 461166}
   - 212: {fileID: 21229088}
+  - 50: {fileID: 5003224}
   m_Layer: 0
   m_Name: playerShip2_orange
   m_TagString: Untagged
@@ -155,6 +158,66 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!50 &5003224
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191098}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5052112
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174584}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &6062422
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174584}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0.21}
+  m_Points:
+    m_Paths:
+    - - {x: 0.5795709, y: -0.039463744}
+      - {x: 0.11021451, y: 0.20053615}
+      - {x: 0.047106266, y: 0.37364423}
+      - {x: -0.048411675, y: 0.37010717}
+      - {x: -0.1266088, y: 0.19148125}
+      - {x: -0.5893565, y: -0.056588277}
+      - {x: -0.39999998, y: -0.375}
+      - {x: -0.17798263, y: -0.30585802}
+      - {x: -0.12553626, y: -0.3798927}
+      - {x: 0.12776819, y: -0.37989277}
+      - {x: 0.16064352, y: -0.30053616}
+      - {x: 0.39, y: -0.36499998}
 --- !u!81 &8163702
 AudioListener:
   m_ObjectHideFlags: 1
@@ -198,14 +261,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  speed: 10
-  maxSpeed: 15
-  rotateSpeed: 8
+  speed: 0.2
+  maxSpeed: 5
+  rotateSpeed: 0.5
   bulletPrefab: {fileID: 158024, guid: 5449e2a1a1afb0d4399e4827f9fa6c0c, type: 2}
-  shootRate: 0.24
+  shootRate: 0.5
   bulletSpeed: 6
   bulletDamage: 10
   shootDeadZone: 0.19
+  shieldPrefab: {fileID: 146508, guid: 7e048ca1c99727444bc5f6d99d03ed2b, type: 2}
   shipSprite: {fileID: 191098}
   moveStick: {fileID: 0}
   shootStick: {fileID: 0}
