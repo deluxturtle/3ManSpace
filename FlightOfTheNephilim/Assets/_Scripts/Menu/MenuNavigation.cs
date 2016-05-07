@@ -17,28 +17,16 @@ public class MenuNavigation : MonoBehaviour {
 
 	#endregion
 
-	void Start() {}
-
-	void Update() {}
-
 	#region Menu headers
 
 	public void MenuButtonNew() {
 		mainMenu.currentState = MenuState.MenuNew;
 	}
 
-	public void MenuButtonLoad() {
-		mainMenu.currentState = MenuState.MenuLoad;
-	}
-
 	public void MenuButtonHelp() {
 		mainMenu.currentState = MenuState.MenuHelp;
 	}
-
-	public void MenuButtonSettings() {
-		mainMenu.currentState = MenuState.MenuSettings;
-	}
-
+	
 	public void MenuButtonCredits() {
 		mainMenu.currentState = MenuState.MenuCredits;
 	}
@@ -49,8 +37,19 @@ public class MenuNavigation : MonoBehaviour {
 
 	#endregion
 
-
 	public void PlayClick() {
 		GetComponent<AudioSource>().Play();
+	}
+
+	public void LoadScene(string scene) {
+		SceneManager.LoadScene(scene);
+	}
+
+	public void LoadSceneByIndex(int index) {
+		SceneManager.LoadScene(index);
+	}
+
+	public void ExitApplication() {
+		Application.Quit();
 	}
 }
