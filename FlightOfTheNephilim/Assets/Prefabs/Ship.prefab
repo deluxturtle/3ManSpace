@@ -28,7 +28,7 @@ GameObject:
   - 95: {fileID: 9506078}
   - 114: {fileID: 11463952}
   - 50: {fileID: 5052112}
-  - 60: {fileID: 6062422}
+  - 61: {fileID: 6122272}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -192,8 +192,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6062422
-PolygonCollider2D:
+--- !u!61 &6122272
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -203,21 +203,9 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.21}
-  m_Points:
-    m_Paths:
-    - - {x: 0.5795709, y: -0.039463744}
-      - {x: 0.11021451, y: 0.20053615}
-      - {x: 0.047106266, y: 0.37364423}
-      - {x: -0.048411675, y: 0.37010717}
-      - {x: -0.1266088, y: 0.19148125}
-      - {x: -0.5893565, y: -0.056588277}
-      - {x: -0.39999998, y: -0.375}
-      - {x: -0.17798263, y: -0.30585802}
-      - {x: -0.12553626, y: -0.3798927}
-      - {x: 0.12776819, y: -0.37989277}
-      - {x: 0.16064352, y: -0.30053616}
-      - {x: 0.39, y: -0.36499998}
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!81 &8163702
 AudioListener:
   m_ObjectHideFlags: 1
@@ -269,6 +257,8 @@ MonoBehaviour:
   bulletSpeed: 6
   bulletDamage: 10
   shootDeadZone: 0.19
+  tripleShotAngle: 20
+  tripleTimerGUI: {fileID: 0}
   shieldPrefab: {fileID: 146508, guid: 7e048ca1c99727444bc5f6d99d03ed2b, type: 2}
   shipSprite: {fileID: 191098}
   moveStick: {fileID: 0}
