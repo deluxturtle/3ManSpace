@@ -13,7 +13,7 @@ public class EnemySpawner : MonoBehaviour {
 
     GameObject TankEnemy;
     GameObject KamikazeEnemy;
-    GameObject SoldierEnemy;
+    public GameObject SoldierEnemy;
     float spawnDelay = 4f;
     float spawnRadius = 25f;
 
@@ -29,10 +29,12 @@ public class EnemySpawner : MonoBehaviour {
         EnemyPrefab = tempResource;
         Destroy(tempResource);
 
+        Debug.LogWarning("Enemy Prefab: " + EnemyPrefab);
+
         TankEnemy = EnemyPrefab;
         KamikazeEnemy = EnemyPrefab;
         SoldierEnemy = EnemyPrefab;
-
+        Debug.LogWarning("Soldier Prefab: " + SoldierEnemy);
         TankEnemy.AddComponent<ClassTank>();
         KamikazeEnemy.AddComponent<ClassKamikaze>();
         SoldierEnemy.AddComponent<ClassSoldier>();
@@ -56,18 +58,29 @@ public class EnemySpawner : MonoBehaviour {
                 SoldierEnemy.AddComponent<AIImmortal>();
                 break;
         }
-
+        Debug.LogWarning("Pre Coroutine Soldier: " + SoldierEnemy);
         StartCoroutine(SpawnEnemy(spawnDelay, SoldierEnemy));
+        //Vector2 tempV2 = new Vector2(player.transform.position.x, player.transform.position.y);
+        //Instantiate(SoldierEnemy, (Random.insideUnitCircle * spawnRadius) + tempV2, Quaternion.identity);
         player = GameObject.FindGameObjectWithTag("Player");
 	}
 
     public IEnumerator SpawnEnemy(float SpawnDelay, GameObject mySpawner)
-    {    
+    {
+        Debug.LogWarning("Post coroutine: " + mySpawner);
         while(enabled)
         {
             yield return new WaitForSeconds(SpawnDelay);
             Vector2 tempV2 = new Vector2(player.transform.position.x, player.transform.position.y);
+            Debug.LogWarning(mySpawner);
             Instantiate(mySpawner, (Random.insideUnitCircle * spawnRadius) + tempV2, Quaternion.identity);
         }
     }
+
+    //public void InvokeEnemy(GameObject spawnEnemy)
+    //{
+    //    Debug.LogWarning(spawnEnemy);
+    //    Vector2 tempV2 = new Vector2(player.transform.position.x, player.transform.position.y);
+    //    GameObject.Instantiate(spawnEnemy, (Random.insideUnitCircle * spawnRadius) + tempV2, Quaternion.identity);
+    //}
 }
