@@ -1,3 +1,0 @@
-Name: Aero
-Source: http://www.dafont.com/aero2.font
-Licence: CC0
