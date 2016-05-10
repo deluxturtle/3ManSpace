@@ -45,8 +45,8 @@ public class ShieldInteraction : MonoBehaviour {
         while (true)
         {
             timeLeft -= Time.deltaTime;
-            Debug.Log(timeLeft);
-            Debug.Log(blink);
+            //Debug.Log(timeLeft);
+            //Debug.Log(blink);
             if(timeLeft <= warningTime)
             {
                 StartCoroutine("Blink");
