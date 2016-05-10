@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class GameController : MonoBehaviour {
 		if (lives > 0) {
 			Invoke("SpawnPlayer", 3);
 		} else {
-			//todo add transistion to gameover scene
+			SceneManager.LoadScene("GameOver");
 		}
 	}
 
