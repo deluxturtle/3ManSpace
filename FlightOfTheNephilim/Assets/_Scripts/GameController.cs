@@ -34,5 +34,4 @@ public class GameController : MonoBehaviour {
 		GameObject temp = Resources.Load<GameObject>("Prefabs/Player");
 		Instantiate(temp, Vector3.zero, Quaternion.identity);
 	}
-
 }
