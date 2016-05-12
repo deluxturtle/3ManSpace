@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /// <summary>
@@ -29,6 +30,12 @@ public class Player : MonoBehaviour {
     public float bulletDamage = 10f;
     [Tooltip("How much you have to move the joystick before it will start fireing.")]
     public float shootDeadZone = 0.19f;
+    [Tooltip("What angle the 2 other bullets shoot at.")]
+    public float tripleShotAngle = 20f;
+
+    [Header("GUI")]
+    public GameObject tripleTimerGUI;
+    public Slider healthBar;
 
     [Header("Other")]
     public GameObject shieldPrefab;
@@ -48,9 +55,16 @@ public class Player : MonoBehaviour {
     private Vector2 shootingDirection = Vector2.zero;
     private bool canShoot = true;
     private Animator animator;
+    private bool tripleShot = false;    //Powerup toggle.
+    private float tripleTimer;
+    private Text tripleTimerText;
+
 
     void Start()
     {
+        tripleTimerText = tripleTimerGUI.GetComponentInChildren<Text>();
+        healthBar.maxValue = health;
+        healthBar.value = health;
         animator = GetComponent<Animator>();
     }
 	
@@ -60,22 +74,8 @@ public class Player : MonoBehaviour {
 
         inputDirection = moveStick.joystickVelocity;
         shootingDirection = shootStick.joystickVelocity;
-        
-        //Shoot
-        if(shootingDirection.magnitude > shootDeadZone)
-        {
-            if (canShoot)
-            {
-                //TODO implement fire rate.
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
-                bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized + inputDirection.normalized);
-                bullet.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
-                //bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, );
-                canShoot = false;
-                Invoke("EnableShot", shootRate);
-            }
 
-        }
+        Shoot();
 
         //Move
         if(inputDirection.magnitude != 0)
@@ -103,7 +103,78 @@ public class Player : MonoBehaviour {
 
         animator.SetFloat("thrust", inputDirection.magnitude);
 
+        UpdateHealth();
     }
+
+    void UpdateHealth()
+    {
+        healthBar.value = health;
+    }
+
+    /// <summary>
+    /// Handles the bullet instantiation.
+    /// </summary>
+    void Shoot()
+    {
+        //Shoot
+        if (shootingDirection.magnitude > shootDeadZone)
+        {
+            if (canShoot)
+            {
+                //TODO implement fire rate.
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+                bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized);
+                bullet.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
+
+                if (tripleShot)
+                {
+                    GameObject bulletLeft = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+                    GameObject bulletRight = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+
+                    bulletLeft.GetComponent<ScriptEnvironment>().SetTargetDirection(Quaternion.Euler(0, 0, tripleShotAngle) * (Vector3)shootingDirection.normalized + (Vector3)inputDirection.normalized);
+                    bulletLeft.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
+                    bulletRight.GetComponent<ScriptEnvironment>().SetTargetDirection(Quaternion.Euler(0,0, -tripleShotAngle) * (Vector3)shootingDirection.normalized + (Vector3)inputDirection.normalized);
+                    bulletRight.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
+
+                }
+
+                //bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, );
+                canShoot = false;
+                Invoke("EnableShot", shootRate);
+            }
+
+        }
+    }
+
+
+
+    /// <summary>
+    /// Enables triple shot and starts tripleshot timer.
+    /// </summary>
+    public void EnableTripleShot(float duration)
+    {
+        tripleTimer = duration;
+        tripleShot = true;
+        tripleTimerGUI.SetActive(true);
+        InvokeRepeating("TripleCountDown", 0, 1);
+    }
+
+    /// <summary>
+    /// Sets the gui text to current time left.
+    /// </summary>
+    void TripleCountDown()
+    {
+        tripleTimer--;
+        tripleTimerText.text = tripleTimer.ToString();
+        if(tripleTimer <= 0)
+        {
+            tripleShot = false;
+            tripleTimerGUI.SetActive(false);
+            CancelInvoke("TripleCountDown");
+        }
+    }
+
+
 
     void EnableShot()
     {
