@@ -29,6 +29,7 @@ GameObject:
   - 114: {fileID: 11463952}
   - 50: {fileID: 5052112}
   - 61: {fileID: 6122272}
+  - 114: {fileID: 11454388}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -259,11 +260,26 @@ MonoBehaviour:
   shootDeadZone: 0.19
   tripleShotAngle: 20
   tripleTimerGUI: {fileID: 0}
+  healthBar: {fileID: 0}
   shieldPrefab: {fileID: 146508, guid: 7e048ca1c99727444bc5f6d99d03ed2b, type: 2}
   shipSprite: {fileID: 191098}
   moveStick: {fileID: 0}
   shootStick: {fileID: 0}
   shipVelocity: {x: 0, y: 0}
+--- !u!114 &11454388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08cb5aae83b23434b967fc180bed8e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 2
+  spawnRadius: 5
+  toSpawn: {fileID: 0}
 --- !u!114 &11463952
 MonoBehaviour:
   m_ObjectHideFlags: 1
