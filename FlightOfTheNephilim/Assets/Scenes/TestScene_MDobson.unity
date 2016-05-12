@@ -221,6 +221,7 @@ MonoBehaviour:
   health: 1
   mySprite: {fileID: 0}
   damage: 0
+  indestructable: 0
   speed: 2
 --- !u!1 &865692263
 GameObject:
@@ -586,3 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab56ee5def2ad34e896712407b9e5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyPrefab: {fileID: 199690, guid: 06820a58beef92546975f53b7f901c9a, type: 2}
+  TankEnemy: {fileID: 199690, guid: 06820a58beef92546975f53b7f901c9a, type: 2}
+  KamikazeEnemy: {fileID: 199690, guid: 06820a58beef92546975f53b7f901c9a, type: 2}
+  SoldierEnemy: {fileID: 199690, guid: 06820a58beef92546975f53b7f901c9a, type: 2}
