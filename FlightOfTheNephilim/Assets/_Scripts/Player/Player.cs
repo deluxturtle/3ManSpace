@@ -31,11 +31,16 @@ public class Player : MonoBehaviour {
     public float shootDeadZone = 0.19f;
 
     [Header("Other")]
+    public GameObject shieldPrefab;
     [Tooltip("Drag the model or sprie that we want to be rotating here.")]
     public GameObject shipSprite;
+	[Tooltip("The joystick used for Moving")]
+	public SwipeJoystick moveStick;
+	[Tooltip( "The joystick used for Shooting" )]
+	public SwipeJoystick shootStick;
 
-    //Hidden
-    [HideInInspector]
+	//Hidden
+	[HideInInspector]
     public Vector2 shipVelocity;
 
 
@@ -53,8 +58,8 @@ public class Player : MonoBehaviour {
 	void Update ()
     {
 
-        inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        shootingDirection = new Vector2(Input.GetAxis("Horizontal2"), -Input.GetAxis("Vertical2"));
+        inputDirection = moveStick.joystickVelocity;
+        shootingDirection = shootStick.joystickVelocity;
         
         //Shoot
         if(shootingDirection.magnitude > shootDeadZone)
@@ -63,9 +68,9 @@ public class Player : MonoBehaviour {
             {
                 //TODO implement fire rate.
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
-                bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized);
+                bullet.GetComponent<ScriptEnvironment>().SetTargetDirection(shootingDirection.normalized + inputDirection.normalized);
                 bullet.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
-                //bullet.GetComponent<ScriptEnvironment>().sp
+                //bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, );
                 canShoot = false;
                 Invoke("EnableShot", shootRate);
             }

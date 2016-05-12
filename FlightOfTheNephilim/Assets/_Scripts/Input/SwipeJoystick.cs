@@ -18,33 +18,34 @@ public class SwipeJoystick : TouchZone {
 
 	#endregion
 
-	void OnEnable() {
-		print("joystick on enable");
-		base.OnEnable();
-	}
-
-	void Start() {
-		base.Start();
-	}
-
-	void Update() {
+	protected override void Update() {
 		base.Update();
 
 		if (SwipeHandler.s.CurrentSwipes > 0) {
 			//print("hi");
 			foreach (Swipe swipe in SwipeHandler.s.swipes) {
 				if (swipe.startingZone == this) {
-					if (swipe.Velocity2D.magnitude <= maxRadius) {
-						joystick.rectTransform.anchoredPosition = swipe.Velocity2D;
+					if (swipe.phase != TouchPhase.Ended) {
+
+						if (swipe.Velocity2D.magnitude <= maxRadius) {
+							joystick.rectTransform.anchoredPosition = swipe.Velocity2D;
+						} else {
+							joystick.rectTransform.anchoredPosition = swipe.Velocity2D.normalized * maxRadius;
+						}
+
+						joystickVelocity = joystick.rectTransform.anchoredPosition - Vector2.zero;
 					} else {
-						joystick.rectTransform.anchoredPosition = swipe.Velocity2D.normalized * maxRadius;
+						Reset();
 					}
-					joystickVelocity = joystick.rectTransform.anchoredPosition - Vector2.zero;
 				}
 			}
 		} else {
-			joystick.rectTransform.anchoredPosition = Vector2.zero;
-			joystickVelocity = Vector2.zero;
+			Reset();
 		}
+	}
+
+	protected void Reset() {
+		joystick.rectTransform.anchoredPosition = Vector2.zero;
+		joystickVelocity = Vector2.zero;
 	}
 }

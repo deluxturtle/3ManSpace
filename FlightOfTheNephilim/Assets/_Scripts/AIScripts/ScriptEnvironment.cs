@@ -78,7 +78,7 @@ public class ScriptEnvironment : ScriptEnemy {
         if (transform.position.x > player.transform.position.x + outOfPlay || transform.position.x < player.transform.position.x - outOfPlay ||
             transform.position.y > player.transform.position.y + outOfPlay || transform.position.y < player.transform.position.y - outOfPlay)
         {
-            Debug.Log("Object removed for being outside of playing field");
+            //Debug.Log("Object removed for being outside of playing field");
             Destruction();
         }
     }

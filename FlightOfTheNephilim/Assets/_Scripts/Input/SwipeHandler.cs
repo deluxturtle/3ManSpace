@@ -72,6 +72,7 @@ public class SwipeHandler : MonoBehaviour {
 							if (swipe.fingerId == next.fingerId) {
 								//same finger
 								swipe.endPos = next.position;
+								swipe.phase = TouchPhase.Moved;
 
 								//print( "moved distance: " + swipe.Distance );
 							}
@@ -89,6 +90,7 @@ public class SwipeHandler : MonoBehaviour {
 							if (swipe.fingerId == next.fingerId) {
 								//same finger
 								swipe.endPos = next.position;
+								swipe.phase = TouchPhase.Ended;
 
 								//add id to list of swipes to remove
 								swipesToRemove.Add(swipe.fingerId);
@@ -153,11 +155,15 @@ public class Swipe {
 	public TouchZone startingZone;
 	public TouchZone endingZone;
 
+	//this is set to the most recent touches phase for processing down the line
+	public TouchPhase phase;
+
 	public Swipe(Vector3 startPos, int fingerId) {
 		this.startPos = startPos;
 		this.fingerId = fingerId;
+		phase = TouchPhase.Began;
 	}
-
+	
 	public enum Direction {
 		Left,
 		Right,
