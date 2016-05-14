@@ -27,7 +27,7 @@ public class BackgroundAsteroid : MonoBehaviour {
 	}
 
 	void Update() {
-		if ((transform.position - objectToTrack.transform.position).magnitude < radius) {
+		if ((transform.position - objectToTrack.transform.position).magnitude > radius) {
 			if (objectToTrack) {
 				Vector2 spawnPos = new Vector2(objectToTrack.transform.position.x, objectToTrack.transform.position.y);
 				transform.position = (Random.insideUnitCircle * radius) + spawnPos;
