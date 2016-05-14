@@ -31,7 +31,7 @@ public class ShieldInteraction : MonoBehaviour {
     /// <param name="other">Other object in collision</param>
 	void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Bullet")
+        if(other.tag == "EBullet")
             Destroy(other.gameObject);
     }
 

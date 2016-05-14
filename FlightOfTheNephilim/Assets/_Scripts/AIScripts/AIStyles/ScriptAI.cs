@@ -164,7 +164,7 @@ public class ScriptAI : ScriptEnemy {
             shootingRadius = myData.Value.ShotRadius;
             shotTimer = myData.Value.GetShotTimer();
             shotSpeed = myData.Value.ShotSpeed;
-            Debug.Log("shot speed");
+            //Debug.Log("shot speed");
             SpriteRenderer myRenderer = GetComponentInChildren<SpriteRenderer>();
             myRenderer.sprite = myData.Value.mySprite;
         }
@@ -180,7 +180,7 @@ public class ScriptAI : ScriptEnemy {
     {
         while(enabled)
         {
-            Debug.Log("Waiting... " + time);
+            //Debug.Log("Waiting... " + time);
             yield return new WaitForSeconds(time);
             Vector3 tempVector;
             tempVector = player.transform.position - transform.position; 
@@ -193,7 +193,7 @@ public class ScriptAI : ScriptEnemy {
 
     public virtual void Shoot()
     {
-        Debug.Log("Base Shooting");
+        //Debug.Log("Base Shooting");
         Instantiate(plasma, transform.position, Quaternion.identity);
     }
 
