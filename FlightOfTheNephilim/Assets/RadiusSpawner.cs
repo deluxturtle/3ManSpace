@@ -15,6 +15,9 @@ public class RadiusSpawner : MonoBehaviour {
 	public float spawnRate = 2;
 	public float spawnRadius = 5;
 	public GameObject toSpawn;
+	public int poolSize = 50;
+
+	GameObject[] pool;
 
 	#endregion
 

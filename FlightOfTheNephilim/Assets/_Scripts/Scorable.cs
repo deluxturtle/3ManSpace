@@ -10,20 +10,21 @@ using System.Collections.Generic;
 /// Description: Scorable 
 /// </summary>
 public class Scorable : MonoBehaviour {
-
 	#region Fields
 
 	public int scoreValue;
 
 	#endregion
-	
-	void Start () {
+
+	void Start() {
 		if (scoreValue == 0) {
 			scoreValue = Random.Range(1, 100);
 		}
 	}
-	
-	void OnDestroy () {
-		GameController.instance.score += scoreValue;
+
+	void OnDestroy() {
+		if (GameController.instance) {
+			GameController.instance.score += scoreValue;
+		}
 	}
 }
