@@ -31,7 +31,7 @@ GameObject:
   - 114: {fileID: 11420264}
   m_Layer: 0
   m_Name: Plasma
-  m_TagString: PBullet
+  m_TagString: EBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,9 +117,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   mySprite: {fileID: 0}
-  damage: 2
+  damage: 1
   indestructable: 1
-  speed: 8
+  speed: 7
 --- !u!114 &11493844
 MonoBehaviour:
   m_ObjectHideFlags: 1

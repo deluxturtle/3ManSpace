@@ -560,12 +560,21 @@ Prefab:
       propertyPath: shootStick
       value: 
       objectReference: {fileID: 1803082970}
+    - target: {fileID: 11403562, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+      propertyPath: mySprite
+      value: 
+      objectReference: {fileID: 369584320}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &369584319 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 174584, guid: 4a124fe1d54ff7545bfd8779904f9226, type: 2}
+  m_PrefabInternal: {fileID: 369584318}
+--- !u!212 &369584320 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 21229088, guid: 4a124fe1d54ff7545bfd8779904f9226,
+    type: 2}
   m_PrefabInternal: {fileID: 369584318}
 --- !u!1001 &389829505
 Prefab:
@@ -1026,11 +1035,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22405274, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22405274, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 142550, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_IsActive

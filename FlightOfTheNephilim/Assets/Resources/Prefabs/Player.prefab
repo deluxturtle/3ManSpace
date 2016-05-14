@@ -31,7 +31,7 @@ GameObject:
   - 114: {fileID: 11454388}
   - 60: {fileID: 6025680}
   m_Layer: 0
-  m_Name: Ship
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
@@ -271,6 +271,7 @@ MonoBehaviour:
   moveStick: {fileID: 0}
   shootStick: {fileID: 0}
   shipVelocity: {x: 0, y: 0}
+  mySprite: {fileID: 0}
 --- !u!114 &11454388
 MonoBehaviour:
   m_ObjectHideFlags: 1

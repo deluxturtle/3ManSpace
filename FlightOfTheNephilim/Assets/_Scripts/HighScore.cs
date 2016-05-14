@@ -40,7 +40,6 @@ public class HighScore : MonoBehaviour {
 		}
 
 		if (updateByController) {
-			print("this ran " + GameController.instance.score);
 			UpdateScores(GameController.instance.score);
 			Destroy(GameController.instance.gameObject);
 			Destroy(gameObject);
