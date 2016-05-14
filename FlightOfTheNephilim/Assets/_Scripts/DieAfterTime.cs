@@ -7,23 +7,21 @@ using System.Collections.Generic;
 /// Contact: Deadwynn@gmail.com
 /// Domain: www.livingvalkyrie.net
 /// 
-/// Description: Scorable 
+/// Description: DieAfterTime 
 /// </summary>
-public class Scorable : MonoBehaviour {
+public class DieAfterTime : MonoBehaviour {
 
 	#region Fields
 
-	public int scoreValue;
+	public float time = 3.5f;
 
 	#endregion
 	
 	void Start () {
-		if (scoreValue == 0) {
-			scoreValue = Random.Range(1, 100);
-		}
+		Invoke("Die", time);
 	}
 	
-	void OnDestroy () {
-		GameController.instance.score += scoreValue;
+	void Die () {
+		Destroy(gameObject);
 	}
 }
