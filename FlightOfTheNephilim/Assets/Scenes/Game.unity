@@ -1035,11 +1035,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22405274, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22405274, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 142550, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_IsActive
