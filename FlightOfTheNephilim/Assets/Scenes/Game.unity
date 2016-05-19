@@ -1035,11 +1035,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22405274, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22405274, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 142550, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
       propertyPath: m_IsActive
@@ -1049,9 +1049,45 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11429284, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 548980687}
+    - target: {fileID: 11429284, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429284, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429284, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429284, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Menu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &548980686 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 146360, guid: 8d2794d4c7fc3914c9d9816ab40d99e9, type: 2}
+  m_PrefabInternal: {fileID: 548980685}
+--- !u!114 &548980687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 548980686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f932bc8c5fde6de4786213fbe60564ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
 --- !u!1001 &608852839
 Prefab:
   m_ObjectHideFlags: 0
