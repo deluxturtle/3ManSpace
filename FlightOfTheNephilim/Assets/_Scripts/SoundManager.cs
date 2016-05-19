@@ -6,6 +6,6 @@ public class SoundManager : MonoBehaviour {
     public AudioClip playerShoot;
 
 
-
+    public AudioClip powerUpPickup;
 
 }
