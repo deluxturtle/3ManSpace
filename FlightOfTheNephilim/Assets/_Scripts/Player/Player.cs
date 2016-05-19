@@ -59,12 +59,14 @@ public class Player : MonoBehaviour {
 
 	public SpriteRenderer mySprite;
 	bool isDead = false;
+    SoundManager soundManager;
 
 	void Start() {
 		tripleTimerText = tripleTimerGUI.GetComponentInChildren<Text>();
 		healthBar.maxValue = health;
 		healthBar.value = health;
 		animator = GetComponent<Animator>();
+        soundManager = FindObjectOfType<SoundManager>();
 
 		if (!moveStick || !shootStick) {
 			moveStick = GameObject.Find("Move Stick").GetComponent<SwipeJoystick>();
@@ -145,10 +147,19 @@ public class Player : MonoBehaviour {
 					           .SetTargetDirection(Quaternion.Euler(0, 0, -tripleShotAngle) * (Vector3) shootingDirection.normalized +
 					                               (Vector3) inputDirection.normalized);
 					bulletRight.GetComponent<ScriptEnvironment>().speed = (shipVelocity.magnitude + bulletSpeed);
+                    //soundManager.GetComponent<AudioSource>().clip 
 				}
+                else
+                {
+                    soundManager.GetComponent<AudioSource>().clip = soundManager.playerShoot;
+                }
 
-				//bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, );
-				canShoot = false;
+                soundManager.GetComponent<AudioSource>().Play();
+
+                //bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, );
+                canShoot = false;
+
+
 				Invoke("EnableShot", shootRate);
 			}
 		}
