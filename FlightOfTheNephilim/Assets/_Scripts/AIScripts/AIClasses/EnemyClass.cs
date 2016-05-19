@@ -50,7 +50,7 @@ public class EnemyClass : MonoBehaviour {
     {
         FindPlayer();
         FindController();
-        GetData();
+        Invoke("GetData", 2f);
     }
 
     /// <summary>

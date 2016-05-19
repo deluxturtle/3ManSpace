@@ -75,9 +75,15 @@ public class ScriptAI : ScriptEnemy {
         FindController();
         FindPlayer();
         GetControllerScript();
-        GetData();
-        GetPlasma();
 
+        Invoke("GetData", .2f);
+        Invoke("GetPlasma", .3f);
+
+        Invoke("StartCo", .5f);
+    }
+
+    void StartCo()
+    {
         StartCoroutine(Shooting(shotTimer));
     }
 
@@ -85,9 +91,9 @@ public class ScriptAI : ScriptEnemy {
     {
         try
         {
-            GameObject temp = Instantiate(Resources.Load("Prefabs/Plasma")) as GameObject;
-            plasma = temp;
-            Destroy(temp);
+            //GameObject temp = Resources.Load("Prefabs/Plasma") as GameObject;
+            plasma = Resources.Load("Prefabs/Plasma") as GameObject;
+            //Destroy(temp);
         }
         catch
         {
@@ -158,6 +164,7 @@ public class ScriptAI : ScriptEnemy {
             shootingRadius = myData.Value.ShotRadius;
             shotTimer = myData.Value.GetShotTimer();
             shotSpeed = myData.Value.ShotSpeed;
+            //Debug.Log("shot speed");
             SpriteRenderer myRenderer = GetComponentInChildren<SpriteRenderer>();
             myRenderer.sprite = myData.Value.mySprite;
         }
@@ -173,6 +180,7 @@ public class ScriptAI : ScriptEnemy {
     {
         while(enabled)
         {
+            //Debug.Log("Waiting... " + time);
             yield return new WaitForSeconds(time);
             Vector3 tempVector;
             tempVector = player.transform.position - transform.position; 

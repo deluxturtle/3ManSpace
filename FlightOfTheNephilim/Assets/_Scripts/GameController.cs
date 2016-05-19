@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour {
 	public int score;
 	public int lives;
 
+	GameObject playerObj;
+
 	void Awake() {
 		DontDestroyOnLoad(this);
 		if (instance == null) {
@@ -18,7 +20,10 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void Respawn() {
+	public void Respawn(GameObject player) {
+		playerObj = player;
+		playerObj.GetComponent<Player>().enabled = false;
+
 		if (lives > 0) {
 			Invoke("SpawnPlayer", 3);
 		} else {
@@ -31,8 +36,9 @@ public class GameController : MonoBehaviour {
 			Destroy(go);
 		}
 
-		GameObject temp = Resources.Load<GameObject>("Prefabs/Player");
-		Instantiate(temp, Vector3.zero, Quaternion.identity);
+		playerObj.GetComponent<Player>().enabled = true;
+		playerObj.GetComponent<Player>().health = 100;
+		playerObj.GetComponent<Player>().UpdateHealth();
+		playerObj.GetComponent<Player>().mySprite.enabled = true;
 	}
-
 }

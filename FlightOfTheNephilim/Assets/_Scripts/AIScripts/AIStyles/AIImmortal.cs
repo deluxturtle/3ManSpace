@@ -90,7 +90,6 @@ public class AIImmortal : AIMimic {
         {
             Debug.LogError("Can not get reference to RotateToTarget Script on child object");
         }
-        TakeDamage(1);
     }
 
     public override void Destruction()
