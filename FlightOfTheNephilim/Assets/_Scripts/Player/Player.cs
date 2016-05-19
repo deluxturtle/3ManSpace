@@ -185,6 +185,7 @@ public class Player : MonoBehaviour {
 		if (other.tag == "EBullet" && enabled) {
 			health -= (int) other.GetComponent<ScriptEnvironment>().damage;
 			UpdateHealth();
+			Destroy(other.gameObject);
 		}
 	}
 }
