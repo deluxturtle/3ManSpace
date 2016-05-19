@@ -74,16 +74,10 @@ public class ScriptEnemy : MonoBehaviour {
 		Destroy(gameObject);
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
+	protected virtual void OnTriggerEnter2D(Collider2D other) {
 		if (!indestructable) {
 			if (other.tag == "PBullet") {
 				TakeDamage(other.GetComponent<ScriptEnvironment>().damage);
-			}
-
-			if (this.GetType() == typeof (ScriptEnvironment)) {
-				if ((tag == "PBullet" && other.tag != "Player") || (tag == "EBullet" && other.tag != "Enemy")) {
-					Destroy(gameObject);
-				}
 			}
 		}
 	}

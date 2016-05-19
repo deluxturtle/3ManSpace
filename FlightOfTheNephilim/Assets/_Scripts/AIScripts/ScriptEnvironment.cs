@@ -92,4 +92,14 @@ public class ScriptEnvironment : ScriptEnemy {
     {
         targetDirection = pDir;
     }
+
+	protected override void OnTriggerEnter2D(Collider2D other) {
+		if (!indestructable) {
+			if ( ( tag == "PBullet" && other.tag != "Player" ) || ( tag == "EBullet" && other.tag != "Enemy" ) ) {
+				if (other.tag != "Untagged") {
+					Destroy( gameObject );
+				}
+			}
+		}
+	}
 }
