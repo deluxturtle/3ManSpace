@@ -29,6 +29,7 @@ GameObject:
   - 114: {fileID: 11405674}
   - 60: {fileID: 6086576}
   - 50: {fileID: 5029454}
+  - 114: {fileID: 11497546}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -137,6 +138,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3677377cffdba4ea027cec328efacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11497546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f75248ea530af0479a3de2bb7ef4a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnChance: 25
+  powerUps:
+  - {fileID: 144528, guid: 2c3464f41af211242a1eb40d70153166, type: 2}
+  - {fileID: 156978, guid: e94ea00a07001424ab70c2598ad7772b, type: 2}
+  - {fileID: 187418, guid: e9db36bd9f8cec140b33230891c46c7d, type: 2}
 --- !u!212 &21208190
 SpriteRenderer:
   m_ObjectHideFlags: 1
